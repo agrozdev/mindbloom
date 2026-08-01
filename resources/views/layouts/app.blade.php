@@ -2,10 +2,13 @@
 <html lang="bg">
 
 <head>
-  <title>@yield('title', 'MindBloom') | Психотерапевтична практика</title>
+  <title>@yield('title', 'MindBloom') | Пространството, в което промяната намира своя път</title>
   <meta charset="UTF-8" />
-  <meta name="description" content="@yield('meta_description', 'MindBloom — психотерапевтична практика в София с индивидуална терапия, групова терапия и уъркшопи.')" />
+  <meta name="description" content="@yield('meta_description', 'MindBloom — пространството, в което промяната намира своя път, във Варна с индивидуална терапия, групова терапия и уъркшопи.')" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  @if (config('app.noindex'))
+    <meta name="robots" content="noindex, nofollow" />
+  @endif
   <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}" />
   <link
     href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Lato:wght@300;400;700&display=swap"

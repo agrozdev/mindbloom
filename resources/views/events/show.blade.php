@@ -9,7 +9,7 @@
       <h1 class="mad-page-title">{{ $event->title }}</h1>
       <nav class="mad-breadcrumb-path">
         <span><a href="{{ route('home') }}" class="mad-link">Начало</a></span> /
-        <span><a href="{{ route('events.index') }}" class="mad-link">Събития</a></span> /
+        <span><a href="{{ route('events.index') }}" class="mad-link">Вълшебни срещи</a></span> /
         <span>{{ $event->title }}</span>
       </nav>
     </div>

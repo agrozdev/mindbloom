@@ -23,7 +23,7 @@
             <ul class="mad-vr-list mad-map-info content-element-3">
               <li>
                 <img src="{{ asset('psychologist_icons_svg/loc4.svg') }}" alt="" class="svg" />
-                <span>София, България</span>
+                <span>Варна, България</span>
               </li>
               <li>
                 <img src="{{ asset('psychologist_icons_svg/phone4.svg') }}" alt="" class="svg" />

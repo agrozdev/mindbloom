@@ -8,16 +8,16 @@
           <a href="{{ route('home') }}">Начало</a>
         </li>
         <li class="menu-item {{ request()->routeIs('about') ? 'current-menu-item' : '' }}">
-          <a href="{{ route('about') }}">За мен</a>
+          <a href="{{ route('about') }}">Моят поглед</a>
         </li>
         <li class="menu-item {{ request()->routeIs('services.*') ? 'current-menu-item' : '' }}">
           <a href="{{ route('services.index') }}">Практика</a>
         </li>
         <li class="menu-item {{ request()->routeIs('events.*') ? 'current-menu-item' : '' }}">
-          <a href="{{ route('events.index') }}">Събития</a>
+          <a href="{{ route('events.index') }}">Вълшебни срещи</a>
         </li>
         <li class="menu-item {{ request()->routeIs('blog.*') ? 'current-menu-item' : '' }}">
-          <a href="{{ route('blog.index') }}">Новини</a>
+          <a href="{{ route('blog.index') }}">Вдъхновяващи истории</a>
         </li>
         <li class="menu-item {{ request()->routeIs('contact') ? 'current-menu-item' : '' }}">
           <a href="{{ route('contact') }}">Контакти</a>
@@ -29,7 +29,7 @@
         <article class="mad-icon-box">
           <i class="mad-icon-box-icon"><img class="svg" src="{{ asset('psychologist_icons_svg/loc2.svg') }}" alt="" /></i>
           <div class="mad-icon-box-content">
-            <p>София, България</p>
+            <p>Варна, България</p>
           </div>
         </article>
       </div>

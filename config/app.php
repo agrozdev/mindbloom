@@ -123,4 +123,18 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Noindex Mode
+    |--------------------------------------------------------------------------
+    |
+    | While the site isn't ready for search engines yet, every page renders
+    | a "noindex, nofollow" meta tag. Defaults to true so it's never
+    | accidentally left off. Set APP_NOINDEX=false in .env once the site is
+    | ready to go live, then re-run `php artisan config:cache`.
+    |
+    */
+
+    'noindex' => (bool) env('APP_NOINDEX', true),
+
 ];

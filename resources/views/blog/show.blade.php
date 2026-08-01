@@ -9,7 +9,7 @@
       <h1 class="mad-page-title">{{ $post->title }}</h1>
       <nav class="mad-breadcrumb-path">
         <span><a href="{{ route('home') }}" class="mad-link">Начало</a></span> /
-        <span><a href="{{ route('blog.index') }}" class="mad-link">Новини</a></span> /
+        <span><a href="{{ route('blog.index') }}" class="mad-link">Вдъхновяващи истории</a></span> /
         <span>{{ $post->title }}</span>
       </nav>
     </div>
@@ -37,7 +37,7 @@
           </div>
         </div>
         <div class="col-lg-4">
-          <h6 class="mad-widget-title">Още новини</h6>
+          <h6 class="mad-widget-title">Още истории</h6>
           <ul class="mad-vr-list">
             @foreach (\App\Models\Post::published()->where('id', '!=', $post->id)->limit(6)->get() as $other)
               <li><a href="{{ route('blog.show', $other) }}">{{ $other->title }}</a></li>

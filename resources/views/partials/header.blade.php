@@ -23,7 +23,7 @@
             <div class="mad-our-info">
               <div class="mad-info">
                 <i><img src="{{ asset('psychologist_icons_svg/loc3.svg') }}" alt="" class="svg" /></i>
-                <span>София, България</span>
+                <span>Варна, България</span>
               </div>
               <div class="mad-info">
                 <i><img src="{{ asset('psychologist_icons_svg/phone3.svg') }}" alt="" class="svg" /></i>
@@ -57,16 +57,16 @@
                 <a href="{{ route('home') }}">Начало</a>
               </li>
               <li class="menu-item {{ request()->routeIs('about') ? 'current-menu-item' : '' }}">
-                <a href="{{ route('about') }}">За мен</a>
+                <a href="{{ route('about') }}">Моят поглед</a>
               </li>
               <li class="menu-item {{ request()->routeIs('services.*') ? 'current-menu-item' : '' }}">
                 <a href="{{ route('services.index') }}">Практика</a>
               </li>
               <li class="menu-item {{ request()->routeIs('events.*') ? 'current-menu-item' : '' }}">
-                <a href="{{ route('events.index') }}">Събития</a>
+                <a href="{{ route('events.index') }}">Вълшебни срещи</a>
               </li>
               <li class="menu-item {{ request()->routeIs('blog.*') ? 'current-menu-item' : '' }}">
-                <a href="{{ route('blog.index') }}">Новини</a>
+                <a href="{{ route('blog.index') }}">Вдъхновяващи истории</a>
               </li>
               <li class="menu-item {{ request()->routeIs('contact') ? 'current-menu-item' : '' }}">
                 <a href="{{ route('contact') }}">Контакти</a>

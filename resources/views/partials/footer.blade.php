@@ -16,10 +16,10 @@
           <section class="mad-widget">
             <h6 class="mad-widget-title">Меню</h6>
             <ul class="mad-vr-list">
-              <li><a href="{{ route('about') }}">За мен</a></li>
+              <li><a href="{{ route('about') }}">Моят поглед</a></li>
               <li><a href="{{ route('services.index') }}">Практика</a></li>
-              <li><a href="{{ route('events.index') }}">Събития</a></li>
-              <li><a href="{{ route('blog.index') }}">Новини</a></li>
+              <li><a href="{{ route('events.index') }}">Вълшебни срещи</a></li>
+              <li><a href="{{ route('blog.index') }}">Вдъхновяващи истории</a></li>
               <li><a href="{{ route('contact') }}">Контакти</a></li>
             </ul>
           </section>

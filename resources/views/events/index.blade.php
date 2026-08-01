@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
-@section('title', 'Събития')
-@section('meta_description', 'Предстоящи събития, уъркшопи и семинари на MindBloom.')
+@section('title', 'Вълшебни срещи')
+@section('meta_description', 'Предстоящи вълшебни срещи, уъркшопи и семинари на MindBloom.')
 
 @section('content')
   <div class="mad-breadcrumb with-bg-img with-overlay" style="background-image:url('{{ asset('images/1920x512_bg4.jpg') }}')">
     <div class="container wide">
-      <h1 class="mad-page-title">Събития</h1>
+      <h1 class="mad-page-title">Вълшебни срещи</h1>
       <nav class="mad-breadcrumb-path">
-        <span><a href="{{ route('home') }}" class="mad-link">Начало</a></span> / <span>Събития</span>
+        <span><a href="{{ route('home') }}" class="mad-link">Начало</a></span> / <span>Вълшебни срещи</span>
       </nav>
     </div>
   </div>

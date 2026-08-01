@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Начало')
-@section('meta_description', 'MindBloom — психотерапевтична практика в София с индивидуална терапия, групова терапия и уъркшопи.')
+@section('meta_description', 'MindBloom — пространството, в което промяната намира своя път, във Варна с индивидуална терапия, групова терапия и уъркшопи.')
 
 @section('header')
   @include('partials.header-home2')
@@ -12,13 +12,13 @@
     style="background-image:url('{{ asset('images/1920x1064_img1.jpg') }}')">
     <div class="mad-media-inner">
       <div class="container">
-        <div class="mad-pre-title">Психотерапевтична практика MindBloom</div>
+        <div class="mad-pre-title">Пространството, в което промяната намира своя път · MindBloom</div>
         <h1 class="mad-title">Индивидуална и групова <br /> терапия</h1>
         <p class="content-element-6">
           <b>Помагаме на хора, двойки и семейства да изградят по-здрави и по-устойчиви връзки — със себе си и с
             другите.</b>
         </p>
-        <a href="{{ route('contact') }}" class="btn btn-huge">Запишете час</a>
+        <a href="{{ route('contact') }}" class="btn btn-huge">Направи първата крачка</a>
       </div>
     </div>
   </div>
@@ -140,7 +140,7 @@
                   </div>
                   <div class="mad-author">
                     <div class="mad-author-info">
-                      <span class="mad-author-name">— Клиент, София</span>
+                      <span class="mad-author-name">— Клиент, Варна</span>
                     </div>
                   </div>
                 </div>
@@ -184,7 +184,7 @@
         <div class="mad-section">
           <div class="mad-title-wrap align-center">
             <div class="mad-pre-title">От блога</div>
-            <h2 class="mad-title">Последни новини</h2>
+            <h2 class="mad-title">Последни вдъхновяващи истории</h2>
           </div>
           <div class="mad-entities item-col-2">
             @foreach ($posts as $post)
@@ -217,7 +217,7 @@
             @endforeach
           </div>
           <div class="align-center">
-            <a href="{{ route('blog.index') }}" class="btn style-2 btn-big">Всички новини</a>
+            <a href="{{ route('blog.index') }}" class="btn style-2 btn-big">Всички вдъхновяващи истории</a>
           </div>
         </div>
       @endif
