@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
-@section('title', 'Практика')
+@section('title', 'Дом на промяната')
 @section('meta_description', 'Сесия за лична яснота, сила в споделеното и уъркшопи в практиката на MindBloom.')
 
 @section('content')
   <div class="mad-breadcrumb with-bg-img with-overlay" style="background-image:url('{{ asset('images/1920x512_bg3.jpg') }}')">
     <div class="container wide">
-      <h1 class="mad-page-title">Практика</h1>
+      <h1 class="mad-page-title">Дом на промяната</h1>
       <nav class="mad-breadcrumb-path">
-        <span><a href="{{ route('home') }}" class="mad-link">Начало</a></span> / <span>Практика</span>
+        <span><a href="{{ route('home') }}" class="mad-link">Начало</a></span> / <span>Дом на промяната</span>
       </nav>
     </div>
   </div>

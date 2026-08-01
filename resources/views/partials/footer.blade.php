@@ -6,8 +6,10 @@
           <section class="mad-widget">
             <a href="{{ route('home') }}" class="mad-logo content-element-4"><img src="{{ asset('images/logo-mindbloom-dark.png') }}" alt="MindBloom" /></a>
             <div class="content-element-4">
-              <p>MindBloom е психотерапевтична практика с индивидуална, групова терапия и уъркшопи, в топла и
-                поверителна обстановка.</p>
+              <p>Място, където умът се успокоява, сърцето си спомня, това което душата отдавна знае, а вътрешната
+                промяна започва с нежно и истинско осъзнаване.<br /><br />
+                Ексклузивно пространство за вътрешен баланс, яснота и личностно израстване. Деликатен процес на
+                промяна, в който срещаш себе си по нов, по-сигурен и дълбок начин.</p>
             </div>
             <p class="copyrights">Всички права запазени &copy; {{ now()->year }} <a href="{{ route('home') }}">MindBloom</a>.</p>
           </section>
@@ -17,16 +19,16 @@
             <h6 class="mad-widget-title">Меню</h6>
             <ul class="mad-vr-list">
               <li><a href="{{ route('about') }}">Моят поглед</a></li>
-              <li><a href="{{ route('services.index') }}">Практика</a></li>
+              <li><a href="{{ route('services.index') }}">Дом на промяната</a></li>
               <li><a href="{{ route('events.index') }}">Вълшебни срещи</a></li>
               <li><a href="{{ route('blog.index') }}">Вдъхновяващи истории</a></li>
-              <li><a href="{{ route('contact') }}">Контакти</a></li>
+              <li><a href="{{ route('contact') }}">Среща с мен</a></li>
             </ul>
           </section>
         </div>
         <div class="col-xl-2 col-lg-3 col-sm-6">
           <section class="mad-widget">
-            <h6 class="mad-widget-title">Практика</h6>
+            <h6 class="mad-widget-title">Дом на промяната</h6>
             <ul class="mad-vr-list">
               @foreach (\App\Models\Service::active()->limit(5)->get() as $footerService)
                 <li><a href="{{ route('services.show', $footerService) }}">{{ $footerService->title }}</a></li>
@@ -36,7 +38,7 @@
         </div>
         <div class="col-xl-4 col-lg-12">
           <section class="mad-widget">
-            <h6 class="mad-widget-title">Абонирайте се за новини</h6>
+            <h6 class="mad-widget-title">Присъедини се към кръга на вдъхновението</h6>
             <p class="content-element-2">Получавайте новини и специални оферти</p>
             <form class="mad-newsletter-form one-line">
               <div class="mad-col">

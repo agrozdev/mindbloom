@@ -60,7 +60,7 @@
                 <a href="{{ route('about') }}">Моят поглед</a>
               </li>
               <li class="menu-item {{ request()->routeIs('services.*') ? 'current-menu-item' : '' }}">
-                <a href="{{ route('services.index') }}">Практика</a>
+                <a href="{{ route('services.index') }}">Дом на промяната</a>
               </li>
               <li class="menu-item {{ request()->routeIs('events.*') ? 'current-menu-item' : '' }}">
                 <a href="{{ route('events.index') }}">Вълшебни срещи</a>
@@ -69,7 +69,7 @@
                 <a href="{{ route('blog.index') }}">Вдъхновяващи истории</a>
               </li>
               <li class="menu-item {{ request()->routeIs('contact') ? 'current-menu-item' : '' }}">
-                <a href="{{ route('contact') }}">Контакти</a>
+                <a href="{{ route('contact') }}">Среща с мен</a>
               </li>
             </ul>
           </nav>
