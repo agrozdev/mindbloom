@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Дом на промяната')
-@section('meta_description', 'Сесия за лична яснота, сила в споделеното и уъркшопи в практиката на MindBloom.')
+@section('meta_description', 'Сесия за лична яснота, силата в споделеното и уъркшопи в практиката на MindBloom.')
 
 @section('content')
   <div class="mad-breadcrumb with-bg-img with-overlay" style="background-image:url('{{ asset('images/1920x512_bg3.jpg') }}')">

@@ -117,7 +117,7 @@
               </div>
             </div>
             <div class="mad-col">
-              <a href="{{ route('contact') }}" class="btn">БЕЗПЛАТНА КОНСУЛТАЦИЯ</a>
+              <a href="{{ route('contact') }}" class="btn">ЗАПАЗИ СВОЕТО МЯСТО</a>
             </div>
           </div>
         </div>

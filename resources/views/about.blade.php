@@ -4,7 +4,7 @@
 @section('meta_description', 'Философията и подходът на психотерапевтичната практика MindBloom — цялостен, интегративен поглед към терапията.')
 
 @section('content')
-  <div class="mad-breadcrumb with-bg-img with-overlay" style="background-image:url('{{ asset('images/1920x512_bg3.jpg') }}')">
+  <div class="mad-breadcrumb with-bg-img with-overlay" style="background-image:url('{{ asset('images/1920x512_bg5.jpg') }}')">
     <div class="container wide">
       <h1 class="mad-page-title">Моят поглед</h1>
       <nav class="mad-breadcrumb-path">
@@ -35,7 +35,7 @@
             Психотерапията е доброволен и много по-безболезнен катализатор на растежа, който така или иначе би се
             случил в живота ви — само че с повече яснота и по-малко излишна болка по пътя.
           </p>
-          <a href="{{ route('contact') }}" class="btn btn-big">Запишете безплатна консултация</a>
+          <a href="{{ route('contact') }}" class="btn btn-big">Запази своето място</a>
         </div>
       </div>
     </div>

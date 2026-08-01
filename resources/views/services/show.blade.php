@@ -35,7 +35,7 @@
               <li><a href="{{ route('services.show', $other) }}">{{ $other->title }}</a></li>
             @endforeach
           </ul>
-          <a href="{{ route('contact') }}" class="btn btn-big content-element-4">Запишете безплатна консултация</a>
+          <a href="{{ route('contact') }}" class="btn btn-big content-element-4">Запази своето място</a>
         </div>
       </div>
     </div>

@@ -12,7 +12,8 @@
     style="background-image:url('{{ asset('images/1920x1064_img1.jpg') }}')">
     <div class="mad-media-inner">
       <div class="container">
-        <div class="mad-pre-title">Пространството, в което промяната намира своя път · MindBloom</div>
+        <div class="mad-pre-title" style="font-weight:700;">Пространството, в което промяната намира своя път ·
+          MindBloom</div>
         <h1 class="mad-title">Затвори очи за момент… <br /> и усети какво има отвъд шума на ежедневието.</h1>
         <p class="content-element-6">
           <b>Вътре в теб съществува пространство на спокойствие, мъдрост и възстановяване. Място, до което можеш да
