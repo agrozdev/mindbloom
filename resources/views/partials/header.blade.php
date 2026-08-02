@@ -16,7 +16,7 @@
     <div class="container-fluid">
       <div class="mad-header-items">
         <div class="mad-header-item">
-          <p>Приемаме нови клиенти <a href="{{ route('contact') }}" class="mad-ulink">Запишете безплатна консултация</a></p>
+          <p>Приемаме нови клиенти <a href="{{ route('contact') }}" class="mad-ulink">Запази своето място</a></p>
         </div>
         <div class="mad-header-item">
           <div class="mad-our-info">
