@@ -9,7 +9,7 @@
       <h1 class="mad-page-title">{{ $service->title }}</h1>
       <nav class="mad-breadcrumb-path">
         <span><a href="{{ route('home') }}" class="mad-link">Начало</a></span> /
-        <span><a href="{{ route('services.index') }}" class="mad-link">Дом на промяната</a></span> /
+        <span><a href="{{ route('services.index') }}" class="mad-link">Нова посока</a></span> /
         <span>{{ $service->title }}</span>
       </nav>
     </div>

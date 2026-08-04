@@ -11,7 +11,7 @@
   @endif
   <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}" />
   <link
-    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Lato:wght@300;400;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Lato:wght@300;400;700&display=swap"
     rel="stylesheet" />
   <link
     href="https://fonts.googleapis.com/css?family=Material+Icons%7CMaterial+Icons+Outlined%7CMaterial+Icons+Two+Tone%7CMaterial+Icons+Round%7CMaterial+Icons+Sharp"

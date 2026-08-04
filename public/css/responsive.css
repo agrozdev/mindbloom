@@ -1664,7 +1664,7 @@
 		left: 0;
 		z-index: 9;
 		color: var(--color-neutral-0);
-		background: var(--color-neutral);
+		background: var(--color-primary);
 		padding: 0.5rem 0.75rem;
 		font-size: 1.5rem;
 		line-height: 1.5rem;
@@ -1676,6 +1676,13 @@
 		font-size: 0.625rem;
 		line-height: 0.75rem;
 		letter-spacing: 2px;
+	}
+
+	.mad-entities.with-date .mad-entity .mad-entity-content .mad-entity-tags {
+		padding-left: 4.5rem;
+		min-height: 3.5rem;
+		display: flex;
+		align-items: center;
 	}
 
 	.mad-entities.with-date.type-2.item-col-3 .mad-entity .video_wrapper_full.image-2.videoWrapperActive {

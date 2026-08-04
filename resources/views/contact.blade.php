@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
-@section('title', 'Среща с мен')
+@section('title', 'Време за вас')
 @section('meta_description', 'Свържете се с MindBloom за безплатна консултация.')
 
 @section('content')
   <div class="mad-breadcrumb with-bg-img with-overlay" style="background-image:url('{{ asset('images/1920x512_bg3.jpg') }}')">
     <div class="container wide">
-      <h1 class="mad-page-title">Среща с мен</h1>
+      <h1 class="mad-page-title">Време за вас</h1>
       <nav class="mad-breadcrumb-path">
-        <span><a href="{{ route('home') }}" class="mad-link">Начало</a></span> / <span>Среща с мен</span>
+        <span><a href="{{ route('home') }}" class="mad-link">Начало</a></span> / <span>Време за вас</span>
       </nav>
     </div>
   </div>
@@ -27,11 +27,11 @@
               </li>
               <li>
                 <img src="{{ asset('psychologist_icons_svg/phone4.svg') }}" alt="" class="svg" />
-                <span>+359 800 000 000</span>
+                <span>0897 416 375</span>
               </li>
               <li>
                 <img src="{{ asset('psychologist_icons_svg/email.svg') }}" alt="" class="svg" />
-                <a href="mailto:hello@mindbloombg.com" class="mad-link">hello@mindbloombg.com</a>
+                <a href="mailto:info@mindbloombg.com" class="mad-link">info@mindbloombg.com</a>
               </li>
               <li>
                 <img src="{{ asset('psychologist_icons_svg/clock4.svg') }}" alt="" class="svg" />

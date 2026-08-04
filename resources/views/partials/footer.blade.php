@@ -4,7 +4,7 @@
       <div class="row justify-content-between vr-size-1 hr-size-1">
         <div class="col-xl-4 col-lg-6 col-sm-12">
           <section class="mad-widget">
-            <a href="{{ route('home') }}" class="mad-logo content-element-4"><img src="{{ asset('images/logo-mindbloom-dark.png') }}" alt="MindBloom" /></a>
+            <a href="{{ route('home') }}" class="mad-logo content-element-4"><img src="{{ asset('images/logo-mindbloom.png') }}" alt="MindBloom" /></a>
             <div class="content-element-4">
               <p>Място, където умът се успокоява, сърцето си спомня, това което душата отдавна знае, а вътрешната
                 промяна започва с нежно и истинско осъзнаване.<br /><br />
@@ -19,16 +19,16 @@
             <h6 class="mad-widget-title">Меню</h6>
             <ul class="mad-vr-list">
               <li><a href="{{ route('about') }}">Моят поглед</a></li>
-              <li><a href="{{ route('services.index') }}">Дом на промяната</a></li>
+              <li><a href="{{ route('services.index') }}">Нова посока</a></li>
               <li><a href="{{ route('events.index') }}">Вълшебни срещи</a></li>
               <li><a href="{{ route('blog.index') }}">Вдъхновяващи истории</a></li>
-              <li><a href="{{ route('contact') }}">Среща с мен</a></li>
+              <li><a href="{{ route('contact') }}">Време за вас</a></li>
             </ul>
           </section>
         </div>
         <div class="col-xl-2 col-lg-3 col-sm-6">
           <section class="mad-widget">
-            <h6 class="mad-widget-title">Дом на промяната</h6>
+            <h6 class="mad-widget-title">Нова посока</h6>
             <ul class="mad-vr-list">
               @foreach (\App\Models\Service::active()->limit(5)->get() as $footerService)
                 <li><a href="{{ route('services.show', $footerService) }}">{{ $footerService->title }}</a></li>

@@ -313,7 +313,7 @@ q, kbd, strong, em, tt, var, span, del, big, small {
 
 h1, h2, h3, h4, h5, h6 {
     color: var(--color-neutral);
-    font-family: 'Lora', sans-serif;
+    font-family: 'Marck Script', cursive;
     font-weight: 400;
     letter-spacing: -0.75px;
 }
@@ -418,7 +418,7 @@ p {
 }
 
 p:not(:last-child) {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 p.mad-text-small:not(:last-child) {
@@ -1123,7 +1123,7 @@ html.mad-theme-white:not(.style-2) .header-4 .logo>img:not(:nth-child(2)) {
     top: 0;
     bottom: 0;
     z-index: 99;
-    color: var(--color-neutral-20);
+    color: #0F1B2E;
     text-align: center;
     overflow: auto;
 }
@@ -1178,7 +1178,7 @@ html.mad-theme-white:not(.style-2) .header-4 .logo>img:not(:nth-child(2)) {
     padding: 0;
     top: 0;
     overflow: hidden;
-    background: url(../images/nav_bg.svg) no-repeat var(--color-neutral);
+    background: url(../images/nav_bg.svg) no-repeat right top #5D82BA;
     background-size: cover;
     animation: nav-fade-out .25s linear both;
 }
@@ -1270,10 +1270,10 @@ html.mad-theme-white:not(.style-2) .header-4 .logo>img:not(:nth-child(2)) {
 }
 
 .mad-nav-canvas.full-screen .mad-vr-nav>ul>li a {
-    font-family: 'Lora', sans-serif;
+    font-family: 'Marck Script', cursive;
     font-size: 1.5rem;
     line-height: 2.5rem;
-    color: var(--color-neutral-20);
+    color: #0F1B2E;
     letter-spacing: 1px;
     font-weight: normal;
     letter-spacing: 0;
@@ -1297,7 +1297,7 @@ html.mad-theme-white:not(.style-2) .header-4 .logo>img:not(:nth-child(2)) {
     font-size: 2.25rem;
     overflow: hidden;
     white-space: nowrap;
-    color: var(--color-neutral-0);
+    color: var(--color-primary);
     transition: all .5s ease;
 }
 
@@ -1322,7 +1322,7 @@ html.mad-theme-white:not(.style-2) .header-4 .logo>img:not(:nth-child(2)) {
 .mad-nav-canvas.full-screen .mad-vr-nav>ul>li.current-menu-item>a, .mad-nav-canvas.full-screen .mad-vr-nav>ul>li:hover>a, .mad-nav-canvas.full-screen .mad-vr-nav>ul>li>.sub-menu a:hover, .mad-nav-canvas.full-screen .mad-vr-nav>ul>li>.sub-menu>li.current-menu-item a {
     text-decoration: none;
     letter-spacing: 5px;
-    color: var(--color-neutral-0);
+    color: var(--color-primary);
 }
 
 .mad-nav-canvas.full-screen .mad-vr-nav>ul>li>.sub-menu a:hover, .mad-nav-canvas.full-screen .mad-vr-nav>ul>li>.sub-menu>li.current-menu-item a {
@@ -1381,7 +1381,8 @@ html.mad-theme-white:not(.style-2) .header-4 .logo>img:not(:nth-child(2)) {
 .mad-nav-close {
     position: absolute;
     top: 2rem;
-    right: 2rem
+    right: 2rem;
+    z-index: 10;
 }
 
 .mad-nav-canvas .mad-icon-boxes.with-border.small-size:not(.vr-type) .mad-col:not(:last-child) .mad-icon-box:after {
@@ -1389,7 +1390,7 @@ html.mad-theme-white:not(.style-2) .header-4 .logo>img:not(:nth-child(2)) {
 }
 
 .mad-nav-canvas .mad-icon-boxes.small-size.style-2 .mad-icon-box {
-    color: var(--color-secondary-5);
+    color: #0F1B2E;
 }
 
 html.with-src-menu {
@@ -1795,7 +1796,7 @@ html.with-src-menu .mad-back-to-top {
 
 .calendar_wrap table caption {
     color: var(--color-neutral-0);
-    font-family: 'Lora', sans-serif;
+    font-family: 'Marck Script', cursive;
     font-size: 1.5rem;
     line-height: 4.5rem;
     text-align: center;
@@ -2031,9 +2032,9 @@ html.with-src-menu .mad-back-to-top {
     ---------------------------------------- */
 
 .mad-footer:not(.footer-2) {
-    color: var(--color-secondary-5);
+    color: #0F1B2E;
     padding: 9rem 0;
-    background: url(../images/footer_bg.svg) no-repeat var(--color-neutral);
+    background: url(../images/footer_bg.svg) no-repeat #83ACEF;
     background-size: cover;
     position: relative;
     z-index: 1;
@@ -2044,7 +2045,7 @@ html.with-src-menu .mad-back-to-top {
 }
 
 .mad-footer:not(.footer-2):not(.footer-4) .mad-widget .mad-widget-title {
-    color: var(--color-neutral-0);
+    color: #0F1B2E;
 }
 
 .mad-footer .mad-widget-title:not(:last-child) {
@@ -2056,7 +2057,7 @@ html.with-src-menu .mad-back-to-top {
     flex-wrap: wrap;
     column-gap: 1rem;
     row-gap: 1rem;
-    color: var(--color-secondary-20);
+    color: #0F1B2E;
     justify-content: space-between;
 }
 
@@ -2065,7 +2066,7 @@ html.with-src-menu .mad-back-to-top {
 }
 
 .copyrights {
-    color: var(--color-secondary-20);
+    color: #0F1B2E;
 }
 
 /* Footer 2 */
@@ -2426,7 +2427,7 @@ html.with-src-menu .mad-back-to-top {
 }
 
 .comment .fn {
-    font-family: 'Lora', sans-serif;
+    font-family: 'Marck Script', cursive;
     font-size: 1.5rem;
     line-height: 2rem;
     color: var(--color-neutral);
@@ -2615,7 +2616,7 @@ html.with-src-menu .mad-back-to-top {
 }
 
 .mad-dropcap.style-2:not(.mad-dropcap--filled)>*:first-child:first-letter {
-    font-family: "Lora", sans-serif;
+    font-family: 'Marck Script', cursive;
 }
 
 .mad-dropcap.color-2>*:first-child:first-letter {
@@ -2634,7 +2635,7 @@ html.with-src-menu .mad-back-to-top {
 .mad-text-medium.mad-dropcap.mad-dropcap--filled>*:first-child:first-letter {
     font-size: 2rem;
     margin-top: 0.5rem;
-    font-family: "Lora", sans-serif;
+    font-family: 'Marck Script', cursive;
 }
 
 /* firefox only */
@@ -2938,7 +2939,10 @@ html.with-src-menu .mad-back-to-top {
 }
 
 .mad-footer .mad-hr-list>li>a, .mad-footer .mad-vr-list>li>a {
-    color: var(--color-neutral-0);
+    color: #0F1B2E;
+    font-family: 'Marck Script', cursive;
+    font-weight: normal;
+    font-size: 1.375rem;
 }
 
 .mad-footer .mad-hr-list>li>a:hover, .mad-footer .mad-vr-list>li>a:hover {
@@ -2976,7 +2980,7 @@ html.with-src-menu .mad-back-to-top {
 
 blockquote:not(.mad-blockquote--unstyled) {
     font-weight: 400;
-    font-family: 'Lora', sans-serif;
+    font-family: 'Marck Script', cursive;
     font-style: italic;
 }
 
@@ -3543,7 +3547,7 @@ blockquote:not(.mad-blockquote--unstyled).mad-blockquote--style-2 {
     font-size: 1.5rem;
     line-height: 2rem;
     font-weight: 400;
-    font-family: "Lora", sans-serif;
+    font-family: 'Marck Script', cursive;
     text-align: initial;
     display: block;
     width: 100%;
@@ -3721,7 +3725,7 @@ blockquote:not(.mad-blockquote--unstyled).mad-blockquote--style-2 {
 }
 
 .mad-tabs:not(.mad-tabs--unstyled) .mad-tabs-nav a {
-    font-family: 'Lora', sans-serif;
+    font-family: 'Marck Script', cursive;
     color: var(--color-primary);
     display: block;
     font-weight: normal;
@@ -4132,7 +4136,7 @@ blockquote:not(.mad-blockquote--unstyled).mad-blockquote--style-2 {
 }
 
 .mad-progress-bar-title {
-    font-family: "Lora", sans-serif;
+    font-family: 'Marck Script', cursive;
     font-size: 1.5rem;
     line-height: 2rem;
     font-weight: 400;
@@ -4202,7 +4206,7 @@ blockquote:not(.mad-blockquote--unstyled).mad-blockquote--style-2 {
 }
 
 .mad-review-box-inner {
-    font-family: 'Lora', sans-serif;
+    font-family: 'Marck Script', cursive;
     font-size: 1.5rem;
     line-height: 2rem;
     letter-spacing: -0.5px;
@@ -4263,7 +4267,7 @@ blockquote:not(.mad-blockquote--unstyled).mad-blockquote--style-2 {
 }
 
 .mad-counter-count {
-    font-family: 'Lora', sans-serif;
+    font-family: 'Marck Script', cursive;
     font-size: 3.75rem;
     line-height: 3.5rem;
     white-space: nowrap;
@@ -4581,7 +4585,7 @@ table tfoot td {
 
 table th {
     font-size: 1.25rem;
-    font-family: 'Lora', sans-serif;
+    font-family: 'Marck Script', cursive;
 }
 
 table tfoot td span {
@@ -4665,7 +4669,7 @@ table.mad-table--vertical tr th {
 .mad-pt-item .mad-pt-header {
     background: var(--color-secondary-80);
     color: var(--color-neutral-0);
-    font-family: 'Lora', sans-serif;
+    font-family: 'Marck Script', cursive;
     font-size: 2.25rem;
     line-height: 2.5rem;
     letter-spacing: -1px;
@@ -4683,7 +4687,7 @@ table.mad-table--vertical tr th {
 
 .mad-pt-item .mad-pt-price span:not(.mad-pt-qv) {
     position: relative;
-    font-family: 'Lora', sans-serif;
+    font-family: 'Marck Script', cursive;
     font-size: 3.75rem;
     line-height: 3.5rem;
     font-style: italic;
@@ -5163,7 +5167,7 @@ table.mad-table--vertical tr th {
 }
 
 .mad-icon-boxes.small-size.style-2 .mad-icon-box {
-    color: var(--color-neutral-0);
+    color: #0F1B2E;
 }
 
 .mad-icon-boxes.style-2 .mad-col:not(:last-child) .mad-icon-box:after {
@@ -5412,7 +5416,7 @@ table.mad-table--vertical tr th {
     height: 5rem;
     background: var(--color-primary);
     border-radius: 50%;
-    font-family: 'Lora', sans-serif;
+    font-family: 'Marck Script', cursive;
     font-size: 4rem;
     line-height: 4rem;
     font-style: italic;
@@ -5748,7 +5752,7 @@ table.mad-table--vertical tr th {
 .mad-entities.with-date .mad-entity .mad-entity-content .mad-entity-date {
     font-size: 3rem;
     line-height: 3rem;
-    font-family: 'Lora', sans-serif;
+    font-family: 'Marck Script', cursive;
     color: var(--color-secondary);
     display: flex;
     flex-direction: column;
@@ -5836,7 +5840,7 @@ table.mad-table--vertical tr th {
 }
 
 .mad-entity-link-element {
-    font-family: 'Lora', sans-serif;
+    font-family: 'Marck Script', cursive;
     display: flex;
     font-size: 1.875rem;
     line-height: 2.5rem;
@@ -6657,7 +6661,7 @@ table.mad-table--vertical tr th {
 
 .tp-layer-section-title {
     text-transform: capitalize;
-    font-family: 'Lora', sans-serif;
+    font-family: 'Marck Script', cursive;
 }
 
 .tp-layer-section-title span {
@@ -7196,7 +7200,7 @@ table input[type="checkbox"]+label[for], table input[type="radio"]+label[for] {
 }
 
 .mad-field-counter-value {
-    font-family: "Lora", serif;
+    font-family: 'Marck Script', cursive;
     color: #313131;
     font-size: 3.7rem;
     line-height: 0.82;
@@ -7561,7 +7565,7 @@ table .mad-price {
     padding: 1rem 2rem;
     background: var(--color-primary);
     border-radius: var(--br-main);
-    font-family: 'Lora', sans-serif;
+    font-family: 'Marck Script', cursive;
     font-size: 1.5rem;
     line-height: 2rem;
     color: var(--color-neutral-0);
@@ -7863,7 +7867,7 @@ table .mad-price {
 
 .mad-dropdown-cart .subtotal span:first-child {
     display: inline-block;
-    font-family: 'Lora', sans-serif;
+    font-family: 'Marck Script', cursive;
     font-size: 1.25rem;
     font-weight: bold;
     color: var(--color-neutral);
@@ -8672,7 +8676,7 @@ form.size-2 .btn.wide {
 
 .mad-filter>li>a {
     display: block;
-    font-family: 'Lora', sans-serif;
+    font-family: 'Marck Script', cursive;
     font-size: 1.5rem;
     line-height: 2rem;
     color: var(--color-neutral-0);
@@ -8720,7 +8724,7 @@ form.size-2 .btn.wide {
 
 .mad-countdown .countdown-amount {
     display: block;
-    font-family: 'Lora', sans-serif;
+    font-family: 'Marck Script', cursive;
     font-size: 3.75rem;
     line-height: 3.5rem;
     font-weight: bold;
@@ -9122,7 +9126,7 @@ form.size-2 .btn.wide {
     ---------------------------------------- */
 
 .mad-404-title {
-    font-family: 'Lora', sans-serif;
+    font-family: 'Marck Script', cursive;
     font-size: 25rem;
     line-height: 25.5rem;
     font-weight: bold;

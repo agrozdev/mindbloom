@@ -1,6 +1,6 @@
 <div id="mad-nav-canvas" class="mad-nav-canvas full-screen">
   <button class="mad-nav-close"><img src="{{ asset('psychologist_icons_svg/close.svg') }}" alt="" class="svg" /></button>
-  <a href="{{ route('home') }}" class="mad-logo"><img src="{{ asset('images/logo-mindbloom-dark.png') }}" alt="MindBloom" /></a>
+  <a href="{{ route('home') }}" class="mad-logo"><img src="{{ asset('images/logo-mindbloom.png') }}" alt="MindBloom" /></a>
   <div class="mad-nav-inner">
     <nav class="mad-vr-nav">
       <ul>
@@ -11,7 +11,7 @@
           <a href="{{ route('about') }}">Моят поглед</a>
         </li>
         <li class="menu-item {{ request()->routeIs('services.*') ? 'current-menu-item' : '' }}">
-          <a href="{{ route('services.index') }}">Дом на промяната</a>
+          <a href="{{ route('services.index') }}">Нова посока</a>
         </li>
         <li class="menu-item {{ request()->routeIs('events.*') ? 'current-menu-item' : '' }}">
           <a href="{{ route('events.index') }}">Вълшебни срещи</a>
@@ -20,7 +20,7 @@
           <a href="{{ route('blog.index') }}">Вдъхновяващи истории</a>
         </li>
         <li class="menu-item {{ request()->routeIs('contact') ? 'current-menu-item' : '' }}">
-          <a href="{{ route('contact') }}">Среща с мен</a>
+          <a href="{{ route('contact') }}">Време за вас</a>
         </li>
       </ul>
     </nav>
@@ -37,7 +37,7 @@
         <article class="mad-icon-box">
           <i class="mad-icon-box-icon"><img class="svg" src="{{ asset('psychologist_icons_svg/phone2.svg') }}" alt="" /></i>
           <div class="mad-icon-box-content">
-            <p>+359 800 000 000 <br /><a href="mailto:hello@mindbloombg.com">hello@mindbloombg.com</a></p>
+            <p>0897 416 375 <br /><a href="mailto:info@mindbloombg.com">info@mindbloombg.com</a></p>
           </div>
         </article>
       </div>
@@ -111,7 +111,7 @@
                 <div class="mad-our-info">
                   <div class="mad-info">
                     <i><img src="{{ asset('psychologist_icons_svg/phone3.svg') }}" alt="" class="svg" /></i>
-                    <span><b>+359 800 000 000</b></span>
+                    <span><b>0897 416 375</b></span>
                   </div>
                 </div>
               </div>

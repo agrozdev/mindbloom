@@ -27,7 +27,7 @@
               </div>
               <div class="mad-info">
                 <i><img src="{{ asset('psychologist_icons_svg/phone3.svg') }}" alt="" class="svg" /></i>
-                <span>+359 800 000 000</span>
+                <span>0897 416 375</span>
               </div>
             </div>
             <div class="mad-info">
@@ -60,7 +60,7 @@
                 <a href="{{ route('about') }}">Моят поглед</a>
               </li>
               <li class="menu-item {{ request()->routeIs('services.*') ? 'current-menu-item' : '' }}">
-                <a href="{{ route('services.index') }}">Дом на промяната</a>
+                <a href="{{ route('services.index') }}">Нова посока</a>
               </li>
               <li class="menu-item {{ request()->routeIs('events.*') ? 'current-menu-item' : '' }}">
                 <a href="{{ route('events.index') }}">Вълшебни срещи</a>
@@ -69,7 +69,7 @@
                 <a href="{{ route('blog.index') }}">Вдъхновяващи истории</a>
               </li>
               <li class="menu-item {{ request()->routeIs('contact') ? 'current-menu-item' : '' }}">
-                <a href="{{ route('contact') }}">Среща с мен</a>
+                <a href="{{ route('contact') }}">Време за вас</a>
               </li>
             </ul>
           </nav>
