@@ -11,7 +11,7 @@
                 Ексклузивно пространство за вътрешен баланс, яснота и личностно израстване. Деликатен процес на
                 промяна, в който срещаш себе си по-нов, по-сигурен и дълбок начин.</p>
             </div>
-            <p class="copyrights">Всички права запазени &copy; {{ now()->year }} <a href="{{ route('home') }}">MindBloom</a>.</p>
+            <p class="copyrights">Всички права запазени &copy; {{ now()->year }} <a href="{{ route('home') }}">MindBloom</a>. Crafted by GrozdevDigital.</p>
           </section>
         </div>
         <div class="col-xl-2 col-lg-3 col-sm-6">
@@ -40,14 +40,31 @@
           <section class="mad-widget">
             <h6 class="mad-widget-title">Присъедини се към кръга на вдъхновението</h6>
             <p class="content-element-2">Получавайте новини и специални оферти</p>
-            <form class="mad-newsletter-form one-line">
+
+            @if (session('newsletter_status'))
+              <div class="mad-alert-box success content-element-3">{{ session('newsletter_status') }}</div>
+            @endif
+
+            <form class="mad-newsletter-form one-line" method="POST" action="{{ route('newsletter.store') }}">
+              @csrf
+              <div class="mad-form-honeypot" aria-hidden="true">
+                <label for="newsletter_website">Website</label>
+                <input type="text" id="newsletter_website" name="website" tabindex="-1" autocomplete="off" />
+              </div>
+              <input type="hidden" name="form_rendered_at" value="{{ now()->timestamp }}" />
               <div class="mad-col">
-                <input type="email" name="email" placeholder="Въведете имейл адрес" />
+                <input type="email" name="newsletter_email" value="{{ old('newsletter_email') }}" required placeholder="Въведете имейл адрес" />
+                @error('newsletter_email') <span class="mad-error-message">{{ $message }}</span> @enderror
               </div>
               <div class="mad-col">
                 <button type="submit" class="btn btn-big btn-style-3">Абонирай се</button>
               </div>
             </form>
+            <ul class="mad-hr-list mad-legal-links">
+              <li><a href="{{ route('legal.privacy') }}"><i class="material-icons">info</i>Политика на поверителност</a></li>
+              <li><a href="{{ route('legal.terms') }}"><i class="material-icons">info</i>Общи условия</a></li>
+              <li><a href="{{ route('legal.cookies') }}"><i class="material-icons">info</i>Политика за бисквитките</a></li>
+            </ul>
           </section>
         </div>
       </div>

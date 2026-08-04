@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Post extends Model
 {
@@ -12,7 +13,7 @@ class Post extends Model
         'excerpt',
         'body',
         'featured_image',
-        'category',
+        'category_id',
         'published_at',
         'is_published',
     ];
@@ -25,6 +26,11 @@ class Post extends Model
     public function getRouteKeyName(): string
     {
         return 'slug';
+    }
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(PostCategory::class, 'category_id');
     }
 
     public function scopePublished($query)

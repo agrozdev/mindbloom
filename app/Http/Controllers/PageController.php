@@ -21,4 +21,19 @@ class PageController extends Controller
     {
         return view('about');
     }
+
+    public function privacyPolicy()
+    {
+        return view('legal.privacy');
+    }
+
+    public function termsOfUse()
+    {
+        return view('legal.terms');
+    }
+
+    public function cookiePolicy()
+    {
+        return view('legal.cookies');
+    }
 }

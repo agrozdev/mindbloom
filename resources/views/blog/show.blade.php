@@ -26,7 +26,7 @@
           @endif
           <div class="mad-entity-tags content-element-3">
             @if ($post->category)
-              <span>{{ $post->category }}</span>
+              <a href="{{ route('blog.category', $post->category) }}">{{ $post->category->name }}</a>
             @endif
             @if ($post->published_at)
               <span>{{ $post->published_at->translatedFormat('j F Y') }}</span>
@@ -40,7 +40,7 @@
           <h6 class="mad-widget-title">Още истории</h6>
           <ul class="mad-vr-list">
             @foreach (\App\Models\Post::published()->where('id', '!=', $post->id)->limit(6)->get() as $other)
-              <li><a href="{{ route('blog.show', $other) }}">{{ $other->title }}</a></li>
+              <li><a href="{{ route('blog.show', [$other->category, $other]) }}">{{ $other->title }}</a></li>
             @endforeach
           </ul>
         </div>

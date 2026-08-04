@@ -196,24 +196,24 @@
                 <article class="mad-entity">
                   @if ($post->featured_image)
                     <div class="mad-entity-media">
-                      <a href="{{ route('blog.show', $post) }}"><img src="{{ asset('storage/' . $post->featured_image) }}" alt="{{ $post->title }}" /></a>
+                      <a href="{{ route('blog.show', [$post->category, $post]) }}"><img src="{{ asset('storage/' . $post->featured_image) }}" alt="{{ $post->title }}" /></a>
                     </div>
                   @endif
                   <div class="mad-entity-content">
                     <div class="mad-entity-header">
                       <div class="mad-entity-tags">
                         @if ($post->category)
-                          <span>{{ $post->category }}</span>
+                          <span>{{ $post->category->name }}</span>
                         @endif
                         @if ($post->published_at)
                           <span>{{ $post->published_at->translatedFormat('j F Y') }}</span>
                         @endif
                       </div>
                       <h5 class="mad-entity-title">
-                        <a href="{{ route('blog.show', $post) }}">{{ $post->title }}</a>
+                        <a href="{{ route('blog.show', [$post->category, $post]) }}">{{ $post->title }}</a>
                       </h5>
                       <p>{{ $post->excerpt }}</p>
-                      <a href="{{ route('blog.show', $post) }}" class="mad-text-link">Прочети още</a>
+                      <a href="{{ route('blog.show', [$post->category, $post]) }}" class="mad-text-link">Прочети още</a>
                     </div>
                   </div>
                 </article>

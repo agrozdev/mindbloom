@@ -47,22 +47,27 @@
               <div class="mad-alert-box success content-element-3">{{ session('status') }}</div>
             @endif
 
-            <form class="mad-contact-form mad-form type-2 item-col-2" method="POST" action="{{ route('contact.store') }}">
+            <form id="mad-contact-form" class="mad-contact-form mad-form type-2 item-col-2" method="POST" action="{{ route('contact.store') }}" novalidate>
               @csrf
+              <div class="mad-form-honeypot" aria-hidden="true">
+                <label for="contact_website">Website</label>
+                <input type="text" id="contact_website" name="website" tabindex="-1" autocomplete="off" />
+              </div>
+              <input type="hidden" name="form_rendered_at" value="{{ now()->timestamp }}" />
               <div class="mad-col">
-                <div class="mad-form-item">
+                <div class="mad-form-item @error('first_name') has-error @enderror">
                   <label>Име *</label>
-                  <input type="text" name="first_name" value="{{ old('first_name') }}" required placeholder="Име" />
+                  <input type="text" name="first_name" value="{{ old('first_name') }}" required data-error="Моля, въведете вашето име." placeholder="Име" />
                   @error('first_name') <span class="mad-error-message">{{ $message }}</span> @enderror
                 </div>
-                <div class="mad-form-item">
+                <div class="mad-form-item @error('last_name') has-error @enderror">
                   <label>Фамилия *</label>
-                  <input type="text" name="last_name" value="{{ old('last_name') }}" required placeholder="Фамилия" />
+                  <input type="text" name="last_name" value="{{ old('last_name') }}" required data-error="Моля, въведете вашата фамилия." placeholder="Фамилия" />
                   @error('last_name') <span class="mad-error-message">{{ $message }}</span> @enderror
                 </div>
-                <div class="mad-form-item">
+                <div class="mad-form-item @error('email') has-error @enderror">
                   <label>Имейл *</label>
-                  <input type="email" name="email" value="{{ old('email') }}" required placeholder="Имейл адрес" />
+                  <input type="email" name="email" value="{{ old('email') }}" required data-error="Моля, въведете валиден имейл адрес." placeholder="Имейл адрес" />
                   @error('email') <span class="mad-error-message">{{ $message }}</span> @enderror
                 </div>
                 <div class="mad-form-item">
@@ -82,10 +87,18 @@
                     </select>
                   </div>
                 </div>
-                <div class="mad-form-item full-height">
+                <div class="mad-form-item full-height @error('message') has-error @enderror">
                   <label>Съобщение *</label>
-                  <textarea rows="5" name="message" required placeholder="Съобщение">{{ old('message') }}</textarea>
+                  <textarea rows="5" name="message" required data-error="Моля, въведете съобщение." placeholder="Съобщение">{{ old('message') }}</textarea>
                   @error('message') <span class="mad-error-message">{{ $message }}</span> @enderror
+                </div>
+                <div class="mad-form-item @error('agree_terms') has-error @enderror">
+                  <input type="checkbox" id="agree_terms" name="agree_terms" value="1" required data-error="Моля, потвърдете съгласието си с Политиката на поверителност и Общите условия." @checked(old('agree_terms')) />
+                  <label for="agree_terms">
+                    Съгласен/а съм с <a href="{{ route('legal.privacy') }}" target="_blank">Политиката на поверителност</a>
+                    и <a href="{{ route('legal.terms') }}" target="_blank">Общите условия за ползване</a>. *
+                  </label>
+                  @error('agree_terms') <span class="mad-error-message">{{ $message }}</span> @enderror
                 </div>
                 <div class="mad-form-item">
                   <button type="submit" class="btn btn-big">
@@ -99,4 +112,8 @@
       </div>
     </div>
   </div>
+
+  @push('scripts')
+    <script src="{{ asset('js/contact-form-validation.js') }}"></script>
+  @endpush
 @endsection

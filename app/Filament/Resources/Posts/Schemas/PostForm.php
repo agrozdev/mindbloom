@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Posts\Schemas;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Toggle;
@@ -27,8 +28,12 @@ class PostForm
                     ->required()
                     ->unique(ignoreRecord: true)
                     ->maxLength(255),
-                TextInput::make('category')
-                    ->maxLength(255),
+                Select::make('category_id')
+                    ->label('Category')
+                    ->relationship('category', 'name')
+                    ->required()
+                    ->searchable()
+                    ->preload(),
                 Textarea::make('excerpt')
                     ->maxLength(500)
                     ->rows(2)

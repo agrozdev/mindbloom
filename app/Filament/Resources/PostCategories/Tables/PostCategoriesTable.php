@@ -1,27 +1,23 @@
 <?php
 
-namespace App\Filament\Resources\Posts\Tables;
+namespace App\Filament\Resources\PostCategories\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
-use Filament\Tables\Columns\IconColumn;
-use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class PostsTable
+class PostCategoriesTable
 {
     public static function configure(Table $table): Table
     {
         return $table
-            ->defaultSort('published_at', 'desc')
+            ->defaultSort('name')
             ->columns([
-                ImageColumn::make('featured_image')->circular(),
-                TextColumn::make('title')->searchable()->sortable(),
-                TextColumn::make('category.name')->label('Category')->badge(),
-                IconColumn::make('is_published')->boolean(),
-                TextColumn::make('published_at')->dateTime()->sortable(),
+                TextColumn::make('name')->searchable()->sortable(),
+                TextColumn::make('slug'),
+                TextColumn::make('posts_count')->counts('posts')->label('Posts'),
             ])
             ->filters([
                 //

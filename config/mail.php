@@ -115,4 +115,17 @@ return [
         'name' => env('MAIL_FROM_NAME', env('APP_NAME', 'Laravel')),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Admin Notification Address
+    |--------------------------------------------------------------------------
+    |
+    | Where contact-form and newsletter-signup notifications are delivered.
+    | Kept separate from the "from" address above, which is just the sender
+    | identity and may differ per environment.
+    |
+    */
+
+    'admin_address' => env('MAIL_ADMIN_ADDRESS', 'info@mindbloombg.com'),
+
 ];

@@ -323,7 +323,7 @@ h1:not(:last-child) {
 }
 
 h2:not(:last-child) {
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
 }
 
 h3:not(:last-child) {
@@ -441,8 +441,9 @@ p.mad-text-small:not(:last-child) {
 }
 
 .mad-text-medium {
-    font-size: 1.125rem;
-    line-height: 2rem;
+    font-family: 'Marck Script', cursive;
+    font-size: 1.375rem;
+    line-height: 2.25rem;
 }
 
 .mad-text-color-2 {
@@ -878,13 +879,13 @@ html.mad-theme-white:not(.style-2) .header-4 .logo>img:not(:nth-child(2)) {
 }
 
 .mad-navigation>li>a {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Marck Script', cursive;
     color: var(--color-neutral);
-    font-size: 0.875rem;
-    line-height: 1rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    font-weight: bold;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    letter-spacing: 0;
+    text-transform: none;
+    font-weight: normal;
     display: block;
     position: relative;
 }
@@ -1605,7 +1606,7 @@ html.with-src-menu .mad-back-to-top {
 }
 
 .content-element-4:not(:last-child) {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .content-element-5:not(:last-child) {
@@ -2895,6 +2896,12 @@ html.with-src-menu .mad-back-to-top {
     font-weight: bold;
 }
 
+.mad-vr-list:not(.mad-map-info)>li>a {
+    font-family: 'Marck Script', cursive;
+    font-weight: normal;
+    font-size: 1.25rem;
+}
+
 .mad-vr-list>li:not(:last-child) {
     margin-bottom: 1rem;
 }
@@ -2929,6 +2936,60 @@ html.with-src-menu .mad-back-to-top {
     position: relative;
 }
 
+.mad-legal-links {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    flex-wrap: nowrap;
+    align-items: center;
+    font-weight: bold;
+    text-transform: none;
+    font-size: 0.75rem;
+}
+
+.mad-legal-links>li {
+    white-space: nowrap;
+}
+
+.mad-legal-links>li>a {
+    display: inline-flex;
+    align-items: center;
+}
+
+.mad-legal-links>li>a .material-icons {
+    font-size: 1rem;
+    margin-right: 0.25rem;
+}
+
+@media only screen and (max-width: 576px) {
+    .mad-legal-links {
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+}
+
+/* Legal/policy pages: GDPR requires "clear and plain language", so the body
+   copy stays in the readable font even though the rest of the site uses the
+   cursive one. Headings keep the cursive brand style. */
+.mad-legal-content {
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    line-height: 1.75rem;
+}
+
+.mad-legal-content ul {
+    padding-left: 1.5rem;
+    list-style: disc;
+}
+
+.mad-legal-content ul:not(:last-child) {
+    margin-bottom: 1.5rem;
+}
+
+.mad-legal-content li:not(:last-child) {
+    margin-bottom: 0.5rem;
+}
+
 .mad-hr-list>li>a, .mad-vr-list>li>a {
     color: var(--color-primary);
     letter-spacing: .45px;
@@ -2938,11 +2999,25 @@ html.with-src-menu .mad-back-to-top {
     color: var(--color-primary-lighter);
 }
 
+.mad-categories-list>li>a {
+    color: var(--color-neutral);
+}
+
+.mad-categories-list>li.is-active>a {
+    color: var(--color-primary);
+}
+
 .mad-footer .mad-hr-list>li>a, .mad-footer .mad-vr-list>li>a {
     color: #0F1B2E;
     font-family: 'Marck Script', cursive;
     font-weight: normal;
     font-size: 1.375rem;
+}
+
+.mad-footer .mad-legal-links>li>a {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.75rem;
+    font-weight: bold;
 }
 
 .mad-footer .mad-hr-list>li>a:hover, .mad-footer .mad-vr-list>li>a:hover {
@@ -5200,6 +5275,9 @@ table.mad-table--vertical tr th {
 
 .mad-icon-boxes.grid-type .mad-icon-box p {
     margin: 0 auto;
+    font-family: 'Marck Script', cursive;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
 }
 
 .mad-icon-boxes.grid-type .mad-icon-box p:not(:last-child) {
@@ -5563,6 +5641,7 @@ table.mad-table--vertical tr th {
 .mad-entity-tags {
     text-transform: uppercase;
     color: var(--color-primary);
+    font-family: 'Lato', sans-serif;
     font-size: 0.875rem;
     line-height: 1.5rem;
     letter-spacing: 1.25px;
@@ -6828,6 +6907,30 @@ input[type="text"], input[type="search"], input[type="date"], input[type="dateti
 
 .mad-form-item.full-height+.mad-form-item {
     margin-top: 2rem;
+}
+
+.mad-error-message {
+    display: block;
+    margin-top: 0.5rem;
+    color: #C4342E;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+.mad-form-item.has-error input, .mad-form-item.has-error textarea, .mad-form-item.has-error select {
+    border-color: #C4342E;
+}
+
+/* Honeypot bot-trap field: kept in the tab order and DOM (not display:none)
+   so unsophisticated bots that only check computed display still fill it
+   in, while real visitors never see or reach it. */
+.mad-form-honeypot {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
 }
 
 /* ----------------------------------------
@@ -9199,4 +9302,64 @@ form.size-2 .btn.wide {
 
 .mad-coming-soon-page .mad-footer .copyrights {
     color: var(--color-secondary-20);
+}
+
+/* ----------------------------------------
+            Cookie consent banner
+        ---------------------------------------- */
+
+.mad-cookie-consent {
+    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    padding: 1.5rem;
+    background: var(--color-neutral-0);
+    box-shadow: 0 -0.25rem 1.5rem rgba(0, 0, 0, 0.12);
+}
+
+.mad-cookie-consent.is-visible {
+    display: block;
+}
+
+.mad-cookie-consent-inner {
+    max-width: 75rem;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 2rem;
+    row-gap: 1rem;
+}
+
+.mad-cookie-consent-inner p {
+    margin: 0;
+    flex: 1 1 25rem;
+    font-size: 0.9375rem;
+    line-height: 1.5rem;
+    color: var(--color-neutral-80);
+}
+
+.mad-cookie-consent-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    flex: 0 0 auto;
+}
+
+@media only screen and (max-width: 576px) {
+    .mad-cookie-consent {
+        padding: 1.25rem 1rem;
+    }
+
+    .mad-cookie-consent-actions {
+        width: 100%;
+    }
+
+    .mad-cookie-consent-actions .btn {
+        flex: 1;
+    }
 }
