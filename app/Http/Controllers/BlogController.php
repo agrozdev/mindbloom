@@ -9,16 +9,14 @@ class BlogController extends Controller
 {
     public function index()
     {
-        return view('blog.index', [
-            'posts' => Post::published()->paginate(9),
-            'categories' => PostCategory::orderBy('name')->get(),
-            'activeCategory' => null,
+        return view('blog.categories', [
+            'categories' => PostCategory::withCount(['posts' => fn ($query) => $query->published()])->orderBy('name')->get(),
         ]);
     }
 
     public function category(PostCategory $category)
     {
-        return view('blog.index', [
+        return view('blog.category', [
             'posts' => $category->posts()->published()->paginate(9),
             'categories' => PostCategory::orderBy('name')->get(),
             'activeCategory' => $category,

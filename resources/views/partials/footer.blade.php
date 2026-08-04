@@ -42,7 +42,9 @@
             <p class="content-element-2">Получавайте новини и специални оферти</p>
 
             @if (session('newsletter_status'))
-              <div class="mad-alert-box success content-element-3">{{ session('newsletter_status') }}</div>
+              <div class="mad-alert-box mad-alert-box--success content-element-3">
+                <div class="mad-alert-box-inner">{{ session('newsletter_status') }}</div>
+              </div>
             @endif
 
             <form class="mad-newsletter-form one-line" method="POST" action="{{ route('newsletter.store') }}">

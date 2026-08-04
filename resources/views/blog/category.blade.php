@@ -1,18 +1,16 @@
 @extends('layouts.app')
 
-@section('title', $activeCategory ? $activeCategory->name : 'Вдъхновяващи истории')
-@section('meta_description', 'Вдъхновяващи истории и статии от практиката на MindBloom.')
+@section('title', $activeCategory->name)
+@section('meta_description', 'Вдъхновяващи истории и статии от практиката на MindBloom в категория ' . $activeCategory->name . '.')
 
 @section('content')
   <div class="mad-breadcrumb with-bg-img with-overlay" style="background-image:url('{{ asset('images/1920x512_bg4.jpg') }}')">
     <div class="container wide">
-      <h1 class="mad-page-title">{{ $activeCategory ? $activeCategory->name : 'Вдъхновяващи истории' }}</h1>
+      <h1 class="mad-page-title">{{ $activeCategory->name }}</h1>
       <nav class="mad-breadcrumb-path">
         <span><a href="{{ route('home') }}" class="mad-link">Начало</a></span> /
-        <span><a href="{{ route('blog.index') }}" class="mad-link">Вдъхновяващи истории</a></span>
-        @if ($activeCategory)
-          / <span>{{ $activeCategory->name }}</span>
-        @endif
+        <span><a href="{{ route('blog.index') }}" class="mad-link">Вдъхновяващи истории</a></span> /
+        <span>{{ $activeCategory->name }}</span>
       </nav>
     </div>
   </div>
@@ -58,7 +56,7 @@
           </div>
 
           @if ($posts->isEmpty())
-            <p class="text-center">Все още няма публикувани новини.</p>
+            <p class="text-center">Все още няма публикувани истории в тази категория.</p>
           @endif
 
           {{ $posts->links() }}
@@ -66,11 +64,11 @@
         <div class="col-lg-4">
           <h6 class="mad-widget-title">Категории</h6>
           <ul class="mad-vr-list mad-categories-list">
-            <li class="{{ $activeCategory === null ? 'is-active' : '' }}">
-              <a href="{{ route('blog.index') }}">Всички</a>
+            <li>
+              <a href="{{ route('blog.index') }}">&larr; Всички категории</a>
             </li>
             @foreach ($categories as $category)
-              <li class="{{ $activeCategory && $activeCategory->is($category) ? 'is-active' : '' }}">
+              <li class="{{ $activeCategory->is($category) ? 'is-active' : '' }}">
                 <a href="{{ route('blog.category', $category) }}">{{ $category->name }}</a>
               </li>
             @endforeach

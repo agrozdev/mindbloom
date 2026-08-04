@@ -44,7 +44,9 @@
             <p class="mad-text-medium content-element-4">Полетата, отбелязани с *, са задължителни.</p>
 
             @if (session('status'))
-              <div class="mad-alert-box success content-element-3">{{ session('status') }}</div>
+              <div class="mad-alert-box mad-alert-box--success content-element-3">
+                <div class="mad-alert-box-inner">{{ session('status') }}</div>
+              </div>
             @endif
 
             <form id="mad-contact-form" class="mad-contact-form mad-form type-2 item-col-2" method="POST" action="{{ route('contact.store') }}" novalidate>
