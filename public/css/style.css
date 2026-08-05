@@ -5832,11 +5832,16 @@ table.mad-table--vertical tr th {
     font-size: 3rem;
     line-height: 3rem;
     font-family: 'Marck Script', cursive;
-    color: var(--color-secondary);
+    color: var(--color-neutral-0);
+    background: var(--color-primary);
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-self: flex-start;
     text-align: center;
     text-transform: uppercase;
+    padding: 1rem 1.25rem;
+    border-radius: var(--br-main);
 }
 
 .mad-entities.with-date.mad-text-medium .mad-entity .mad-entity-content .mad-entity-date,
