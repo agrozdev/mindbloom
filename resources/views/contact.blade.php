@@ -49,7 +49,7 @@
               </div>
             @endif
 
-            <form id="mad-contact-form" class="mad-contact-form mad-form type-2 item-col-2" method="POST" action="{{ route('contact.store') }}" novalidate>
+            <form id="mad-contact-form" class="mad-contact-form mad-form type-2 item-col-2" method="POST" action="{{ route('contact.store') }}" novalidate data-validate>
               @csrf
               <div class="mad-form-honeypot" aria-hidden="true">
                 <label for="contact_website">Website</label>
@@ -114,8 +114,4 @@
       </div>
     </div>
   </div>
-
-  @push('scripts')
-    <script src="{{ asset('js/contact-form-validation.js') }}"></script>
-  @endpush
 @endsection

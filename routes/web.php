@@ -5,6 +5,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PostQuestionController;
 use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,7 @@ Route::get('/events/{event}', [EventController::class, 'show'])->name('events.sh
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{category}', [BlogController::class, 'category'])->name('blog.category');
 Route::get('/blog/{category}/{post}', [BlogController::class, 'show'])->name('blog.show')->scopeBindings();
+Route::post('/blog/{category}/{post}/question', [PostQuestionController::class, 'store'])->name('blog.question')->scopeBindings()->middleware('throttle:5,1');
 
 Route::get('/contact', [ContactController::class, 'create'])->name('contact');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store')->middleware('throttle:5,1');

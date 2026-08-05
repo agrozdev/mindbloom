@@ -63,6 +63,7 @@
   </div>
 
   @include('partials.cookie-consent')
+  @include('partials.phone-fab')
 
   <script src="{{ asset('vendors/modernizr.js') }}"></script>
   <script src="{{ asset('vendors/jquery-3.6.0.min.js') }}"></script>
@@ -79,6 +80,7 @@
   <script src="{{ asset('js/modules/mad.sticky-header-section.min.js') }}"></script>
   <script src="{{ asset('js/mad.app.js') }}"></script>
   <script src="{{ asset('js/cookie-consent.js') }}"></script>
+  <script src="{{ asset('js/form-validation.js') }}"></script>
   @stack('scripts')
 </body>
 
