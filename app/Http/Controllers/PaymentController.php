@@ -34,6 +34,8 @@ class PaymentController extends Controller
 
     public function notify(Request $request, MyPosService $myPos)
     {
+        $this->rawLog($request->all());
+
         try {
             $response = $myPos->parseNotify($request->all());
         } catch (IPC_Exception $e) {
@@ -71,5 +73,19 @@ class PaymentController extends Controller
         }
 
         return response('OK', 200);
+    }
+
+    /**
+     * Writes the raw IPN payload straight to a dedicated file, bypassing the
+     * Log facade entirely — kept as a fallback in case the app's normal
+     * logging isn't writing (as observed once on production).
+     *
+     * @param  array<string, mixed>  $payload
+     */
+    private function rawLog(array $payload): void
+    {
+        $line = '['.now()->toDateTimeString().'] '.json_encode($payload, JSON_UNESCAPED_UNICODE).PHP_EOL;
+
+        @file_put_contents(storage_path('logs/mypos-raw.log'), $line, FILE_APPEND | LOCK_EX);
     }
 }

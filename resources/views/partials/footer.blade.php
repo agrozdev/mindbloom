@@ -5,7 +5,7 @@
         <div class="col-xl-4 col-lg-6 col-sm-12">
           <section class="mad-widget">
             <a href="{{ route('home') }}" class="mad-logo content-element-4"><img src="{{ asset('images/logo-mindbloom.png') }}" alt="MindBloom" /></a>
-            <div class="content-element-4">
+            <div class="content-element-4" style="font-family:'Marck Script', cursive;">
               <p>Място, където умът се успокоява, сърцето си спомня, това което душата отдавна знае, а вътрешната
                 промяна започва с нежно и истинско осъзнаване.<br /><br />
                 Ексклузивно пространство за вътрешен баланс, лично израстване, представляващ деликатен процес на

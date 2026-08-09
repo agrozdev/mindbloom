@@ -13,6 +13,8 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->validateCsrfTokens(except: [
             'payments/mypos/notify',
+            'payments/*/thank-you',
+            'payments/*/cancelled',
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

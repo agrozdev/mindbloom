@@ -23,8 +23,8 @@ Route::get('/events/{event}', [EventController::class, 'show'])->name('events.sh
 Route::get('/events/{event}/register', [EventRegistrationController::class, 'checkout'])->name('events.register');
 Route::post('/events/{event}/register', [EventRegistrationController::class, 'store'])->name('events.register.store')->middleware('throttle:10,1');
 
-Route::get('/payments/{order:uuid}/thank-you', [PaymentController::class, 'thankYou'])->name('payments.thank-you');
-Route::get('/payments/{order:uuid}/cancelled', [PaymentController::class, 'cancelled'])->name('payments.cancelled');
+Route::match(['get', 'post'], '/payments/{order:uuid}/thank-you', [PaymentController::class, 'thankYou'])->name('payments.thank-you');
+Route::match(['get', 'post'], '/payments/{order:uuid}/cancelled', [PaymentController::class, 'cancelled'])->name('payments.cancelled');
 Route::post('/payments/mypos/notify', [PaymentController::class, 'notify'])->name('payments.mypos.notify');
 
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
