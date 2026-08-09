@@ -40,6 +40,11 @@ class EventForm
                     ->required(),
                 TextInput::make('location')
                     ->maxLength(255),
+                TextInput::make('price')
+                    ->numeric()
+                    ->prefix('€')
+                    ->minValue(0)
+                    ->helperText('Оставете празно, ако събитието е безплатно и не изисква регистрация с плащане.'),
                 Toggle::make('is_active')
                     ->default(true),
             ]);

@@ -40,4 +40,14 @@ return [
         'site_verification' => env('GOOGLE_SITE_VERIFICATION'),
     ],
 
+    'mypos' => [
+        'sandbox' => env('MYPOS_SANDBOX', true),
+        'config_package' => env('MYPOS_CONFIG_PACKAGE'),
+        'sid' => env('MYPOS_SID'),
+        'wallet' => env('MYPOS_WALLET_NUMBER'),
+        'key_index' => env('MYPOS_KEY_INDEX', 1),
+        'private_key_path' => env('MYPOS_PRIVATE_KEY_PATH', storage_path('app/mypos/private_key.pem')),
+        'public_key_path' => env('MYPOS_PUBLIC_KEY_PATH', storage_path('app/mypos/mypos_public_key.pem')),
+    ],
+
 ];

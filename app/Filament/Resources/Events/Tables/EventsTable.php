@@ -21,6 +21,7 @@ class EventsTable
                 TextColumn::make('title')->searchable()->sortable(),
                 TextColumn::make('starts_at')->dateTime()->sortable(),
                 TextColumn::make('location'),
+                TextColumn::make('price')->money('EUR')->sortable(),
                 IconColumn::make('is_active')->boolean(),
             ])
             ->filters([

@@ -32,6 +32,9 @@
               @if ($post->published_at)
                 <span>{{ $post->published_at->translatedFormat('j F Y') }}</span>
               @endif
+              @if ($post->price !== null)
+                <span><i class="fas fa-lock"></i> Заключена история</span>
+              @endif
             </div>
             <a href="#" data-arctic-modal="#post-question-modal" class="btn">Помисли и сподели</a>
           </div>
@@ -42,9 +45,26 @@
             </div>
           @endif
 
-          <div class="mad-text-medium">
-            {!! $post->body !!}
-          </div>
+          @if ($showFullContent)
+            <div class="mad-text-medium">
+              {!! $post->body !!}
+            </div>
+          @else
+            <div class="content-element-3" style="display:flex; align-items:center; gap:1.5rem; background:var(--color-primary-10); color:var(--color-primary-darker); border-radius:var(--br-main); padding:1.5rem;">
+              <i class="fas fa-lock" style="font-size:6.75rem; line-height:1; opacity:.35; flex-shrink:0;"></i>
+              <div style="font-family:'Marck Script', cursive; font-size:1.375rem; line-height:2.25rem;">
+                Тази история е заключена… но ако се осмелиш, да я отключиш, ще видиш какво е скрито вътре.<br>
+                Отключи я…… прочети…..и не мигай.
+              </div>
+            </div>
+            @if ($post->story_info)
+              <div class="mad-text-medium content-element-3">
+                {!! $post->story_info !!}
+              </div>
+            @endif
+            <p class="content-element-3"><strong>Цена за отключване:</strong> {{ number_format((float) $post->price, 2) }} €</p>
+            <a href="{{ route('blog.unlock', [$post->category, $post]) }}" class="btn btn-big">Разкрий сега</a>
+          @endif
         </div>
         <div class="col-lg-4">
           <h6 class="mad-widget-title">Още истории</h6>

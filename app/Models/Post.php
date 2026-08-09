@@ -16,11 +16,14 @@ class Post extends Model
         'category_id',
         'published_at',
         'is_published',
+        'price',
+        'story_info',
     ];
 
     protected $casts = [
         'is_published' => 'boolean',
         'published_at' => 'datetime',
+        'price' => 'decimal:2',
     ];
 
     public function getRouteKeyName(): string

@@ -31,6 +31,9 @@
             @if ($event->location)
               <li><strong>Къде:</strong> {{ $event->location }}</li>
             @endif
+            @if ($event->price !== null)
+              <li><strong>Цена:</strong> {{ number_format((float) $event->price, 2) }} €</li>
+            @endif
           </ul>
           <div class="mad-text-medium">
             {!! $event->description !!}
@@ -38,12 +41,12 @@
         </div>
         <div class="col-lg-4">
           <h6 class="mad-widget-title">Други събития</h6>
-          <ul class="mad-vr-list">
+          <ul class="mad-vr-list content-element-3">
             @foreach (\App\Models\Event::active()->where('id', '!=', $event->id)->limit(6)->get() as $other)
               <li><a href="{{ route('events.show', $other) }}">{{ $other->title }}</a></li>
             @endforeach
           </ul>
-          <a href="{{ route('contact') }}" class="btn btn-big content-element-4">Запазете си място</a>
+          <a href="{{ route('events.register', $event) }}" class="btn btn-big">Регистрирай се за събитието</a>
         </div>
       </div>
     </div>

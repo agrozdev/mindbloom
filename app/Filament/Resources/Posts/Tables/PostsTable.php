@@ -22,6 +22,7 @@ class PostsTable
                 TextColumn::make('category.name')->label('Category')->badge(),
                 IconColumn::make('is_published')->boolean(),
                 TextColumn::make('published_at')->dateTime()->sortable(),
+                TextColumn::make('price')->money('EUR')->sortable(),
             ])
             ->filters([
                 //

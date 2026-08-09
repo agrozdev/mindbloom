@@ -44,6 +44,15 @@ class PostForm
                     ->image()
                     ->directory('blog'),
                 DateTimePicker::make('published_at'),
+                TextInput::make('price')
+                    ->numeric()
+                    ->prefix('€')
+                    ->minValue(0)
+                    ->helperText('Оставете празно, ако историята е безплатна.'),
+                RichEditor::make('story_info')
+                    ->label('Story info (locked teaser)')
+                    ->helperText('Shown instead of the full story when a price is set, together with a lock icon and payment button. Ignored for free stories.')
+                    ->columnSpanFull(),
                 Toggle::make('is_published')
                     ->default(false),
             ]);

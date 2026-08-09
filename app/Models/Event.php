@@ -14,12 +14,14 @@ class Event extends Model
         'image',
         'starts_at',
         'location',
+        'price',
         'is_active',
     ];
 
     protected $casts = [
         'is_active' => 'boolean',
         'starts_at' => 'datetime',
+        'price' => 'decimal:2',
     ];
 
     public function getRouteKeyName(): string
