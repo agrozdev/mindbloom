@@ -12,12 +12,26 @@
     style="background-image:url('{{ asset('images/1920x1064_img1.jpg') }}')">
     <div class="mad-media-inner">
       <div class="container">
-        <div class="mad-pre-title" style="font-weight:700;">Пространството, в което промяната намира своя път ·
-          MindBloom</div>
-        <h1 class="mad-title">Затвори очи за момент… <br /> и усети какво има отвъд шума на ежедневието.</h1>
+        <style>
+          .mad-hero-highlight {
+            display: inline;
+            line-height: 1.5;
+            background: rgba(255, 255, 255, .55);
+            border-radius: .375rem;
+            padding: .03em .35em;
+            box-decoration-break: clone;
+            -webkit-box-decoration-break: clone;
+          }
+        </style>
+        <div class="mad-pre-title" style="font-weight:700; margin-bottom:1.5rem;">
+          <span class="mad-hero-highlight">Пространството, в което промяната намира своя път · MindBloom</span>
+        </div>
+        <h1 class="mad-title">
+          <span class="mad-hero-highlight">Затвори очи за момент… <br /> и усети какво има отвъд шума на ежедневието.</span>
+        </h1>
         <p class="content-element-6">
-          <b>Вътре в теб съществува пространство на спокойствие, мъдрост и възстановяване. Място, до което можеш да
-            достигнеш, когато си позволиш да се вслушаш по-дълбоко в себе си.</b>
+          <b><span class="mad-hero-highlight" style="font-family:'Marck Script', cursive;">Вътре в теб съществува пространство на спокойствие, мъдрост и възстановяване. Място, до което можеш да
+            достигнеш, когато си позволиш да се вслушаш по-дълбоко в себе си.</span></b>
         </p>
         <a href="{{ route('contact') }}" class="btn btn-huge">Направи първата крачка</a>
       </div>

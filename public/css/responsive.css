@@ -1500,6 +1500,10 @@
 	table.mad-table--vertical tr th {
 		width: auto;
 	}
+
+	.mad-breadcrumb.with-bg-img {
+		background-position: right center;
+	}
 }
 
 @media (max-width: 568px) {

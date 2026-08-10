@@ -80,6 +80,7 @@
   <script src="{{ asset('js/modules/mad.sticky-header-section.min.js') }}"></script>
   <script src="{{ asset('js/mad.app.js') }}"></script>
   <script src="{{ asset('js/cookie-consent.js') }}"></script>
+  <script src="{{ asset('js/mad.ui.js') }}"></script>
   <script src="{{ asset('js/form-validation.js') }}"></script>
   @stack('scripts')
 </body>

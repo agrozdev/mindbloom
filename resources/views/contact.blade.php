@@ -4,7 +4,7 @@
 @section('meta_description', 'Свържете се с MindBloom за безплатна консултация.')
 
 @section('content')
-  <div class="mad-breadcrumb with-bg-img with-overlay" style="background-image:url('{{ asset('images/1920x512_bg3.jpg') }}')">
+  <div class="mad-breadcrumb with-bg-img with-overlay" style="background-image:url('{{ asset('images/contact-banner.jpg') }}'); background-position:35% center;">
     <div class="container wide">
       <h1 class="mad-page-title">Време за вас</h1>
       <nav class="mad-breadcrumb-path">
@@ -38,6 +38,9 @@
                 Понеделник - Петък: 9:00 - 18:00
               </li>
             </ul>
+            <div class="mad-img">
+              <img src="{{ asset('images/contact-fairytale.jpg') }}" alt="Време за вас" class="w-100" />
+            </div>
           </div>
           <div class="col-lg-6">
             <h2 class="mad-title">Пишете ни</h2>

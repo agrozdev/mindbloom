@@ -36,7 +36,7 @@ class PostForm
                     ->preload(),
                 Textarea::make('excerpt')
                     ->maxLength(500)
-                    ->rows(2)
+                    ->rows(5)
                     ->columnSpanFull(),
                 RichEditor::make('body')
                     ->columnSpanFull(),

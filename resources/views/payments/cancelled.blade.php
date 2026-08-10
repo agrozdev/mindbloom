@@ -3,7 +3,7 @@
 @section('title', 'Плащането беше отказано')
 
 @section('content')
-  <div class="mad-breadcrumb with-bg-img with-overlay" style="background-image:url('{{ asset('images/1920x512_bg4.jpg') }}')">
+  <div class="mad-breadcrumb with-bg-img with-overlay" style="background-image:url('{{ asset('images/1920x512_bg4.jpg') }}'); background-position:15% center;">
     <div class="container wide">
       <h1 class="mad-page-title">Плащането беше отказано</h1>
       <nav class="mad-breadcrumb-path">

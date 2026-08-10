@@ -28,7 +28,7 @@ class ServiceForm
                     ->maxLength(255),
                 Textarea::make('excerpt')
                     ->maxLength(500)
-                    ->rows(2)
+                    ->rows(5)
                     ->columnSpanFull(),
                 RichEditor::make('description')
                     ->columnSpanFull(),

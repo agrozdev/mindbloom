@@ -4,7 +4,7 @@
 @section('meta_description', 'Философията и подходът на психотерапевтичната практика MindBloom — цялостен, интегративен поглед към терапията.')
 
 @section('content')
-  <div class="mad-breadcrumb with-bg-img with-overlay" style="background-image:url('{{ asset('images/1920x512_bg5.jpg') }}')">
+  <div class="mad-breadcrumb with-bg-img with-overlay" style="background-image:url('{{ asset('images/1920x512_bg5.jpg') }}'); background-position:25% center;">
     <div class="container wide">
       <h1 class="mad-page-title">Моят поглед</h1>
       <nav class="mad-breadcrumb-path">

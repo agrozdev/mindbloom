@@ -9438,3 +9438,42 @@ form.size-2 .btn.wide {
         flex: 1;
     }
 }
+
+/* Copy protection */
+body {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+input,
+textarea,
+select,
+[contenteditable] {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+.mad-copy-warning {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(1rem);
+    background: var(--color-primary-darker);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--br-main);
+    font-size: 0.9375rem;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.mad-copy-warning.is-visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}

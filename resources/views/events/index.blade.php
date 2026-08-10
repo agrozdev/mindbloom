@@ -4,7 +4,7 @@
 @section('meta_description', 'Предстоящи вълшебни срещи, уъркшопи и семинари на MindBloom.')
 
 @section('content')
-  <div class="mad-breadcrumb with-bg-img with-overlay" style="background-image:url('{{ asset('images/1920x512_bg4.jpg') }}')">
+  <div class="mad-breadcrumb with-bg-img with-overlay" style="background-image:url('{{ asset('images/events-index-banner.jpg') }}'); background-position:35% center;">
     <div class="container wide">
       <h1 class="mad-page-title">Вълшебни срещи</h1>
       <nav class="mad-breadcrumb-path">
