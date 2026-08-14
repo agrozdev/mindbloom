@@ -3406,13 +3406,13 @@ blockquote:not(.mad-blockquote--unstyled).mad-blockquote--style-2 {
     border-radius: 50%;
     z-index: 104;
     color: var(--color-neutral-0);
-    background: var(--color-primary);
+    background: #25D366;
     box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.25);
     transition: background .3s ease;
 }
 
 .mad-phone-fab:hover {
-    background: var(--color-primary-lighter);
+    background: #1EBE5A;
     color: var(--color-neutral-0);
 }
 

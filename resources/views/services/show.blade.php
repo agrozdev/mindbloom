@@ -3,6 +3,41 @@
 @section('title', $service->title)
 @section('meta_description', $service->excerpt)
 
+@php
+  $serviceSchemaMeta = [
+    'individualna-terapiya' => [
+      'serviceType' => 'Individual psychotherapy session',
+      'description' => 'Индивидуална терапевтична сесия в практиката на MindBloom, Варна.',
+    ],
+    'grupova-terapiya' => [
+      'serviceType' => 'Group therapy session',
+      'description' => 'Групова терапевтична сесия в практиката на MindBloom, Варна.',
+    ],
+    'uyrkshopi' => [
+      'serviceType' => 'Workshop',
+      'description' => 'Уъркшоп в практиката на MindBloom, Варна.',
+    ],
+  ][$service->slug] ?? [
+    'serviceType' => 'Service',
+    'description' => $service->excerpt,
+  ];
+@endphp
+
+@push('scripts')
+  <script type="application/ld+json">
+    {
+      "@@context": "https://schema.org",
+      "@@type": "Service",
+      "serviceType": {!! json_encode($serviceSchemaMeta['serviceType']) !!},
+      "name": {!! json_encode($service->title) !!},
+      "description": {!! json_encode($serviceSchemaMeta['description']) !!},
+      "url": {!! json_encode(route('services.show', $service)) !!},
+      "provider": { "@@id": {!! json_encode(route('home') . '#business') !!} },
+      "areaServed": { "@@type": "City", "name": "Varna" }
+    }
+  </script>
+@endpush
+
 @section('content')
   <div class="mad-breadcrumb with-bg-img with-overlay" style="background-image:url('{{ asset('images/1920x512_bg3.jpg') }}')">
     <div class="container wide">
@@ -24,7 +59,7 @@
               <img src="{{ asset('storage/' . $service->image) }}" alt="{{ $service->title }}" />
             </div>
           @endif
-          <div class="mad-text-medium">
+          <div class="mad-text-medium" style="font-family:'Marck Script', cursive;">
             {!! $service->description !!}
           </div>
         </div>

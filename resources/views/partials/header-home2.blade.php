@@ -90,9 +90,7 @@
             <div class="mad-col">
               <div class="mad-social-icons style-2 size-small">
                 <ul>
-                  <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                  <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                  <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                  <li><a href="https://www.facebook.com/mybio.net" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a></li>
                 </ul>
               </div>
             </div>

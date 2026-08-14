@@ -20,7 +20,7 @@
           <img src="{{ asset('images/880x920_img1.jpg') }}" alt="MindBloom" class="w-100" />
         </div>
         <div class="col-lg-6">
-          <h2 class="mad-title">Моята философия</h2>
+          <h2 class="mad-title">Пътуване</h2>
           <p class="mad-text-medium content-element-4">
             Не всяко пътешествие започва с отговор, а често с въпрос, който не ни позволява да живеем по-познатия ни
             остарял начин. Преди да открием света, сме призовани да открием себе си.

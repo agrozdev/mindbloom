@@ -43,12 +43,19 @@
 
       <div class="mad-section align-center mad-section--stretched mad-colorizer--scheme-color with-texture12">
         <div class="mad-pre-title">Здравейте</div>
-        <h2 class="mad-title">Всеки човек, двойка и <br /> семейство е уникален</h2>
-        <p class="content-element-6 mad-text-medium">
-          Изграждаме всяка сесия около това, което носите — независимо дали става дума за справяне с тревожност,
-          възстановяване на доверието във връзка, или просто за поверително пространство да мислите на глас. Вярваме
-          в цялостен подход, насочен към причините, а не само към симптомите.
-        </p>
+        <h2 class="mad-title">Вашата история. <br /> Вашето ново начало…</h2>
+        <div class="content-element-6 mad-text-medium">
+          <p>Всяка истинска приказка започва с история, изпълнена с красиви глави - любов, успехи, срещи и сбъднати мечти. Понякога има страници, които бихме искали да пренапишем, както и такива, които дълго време, сме пазили заключени дълбоко в себе си.</p>
+          <p>Вярваме, че дори най-сложната история може да намери своя красив смисъл, затова не можем да Ви покажем готова приказка…</p>
+          <p><strong>Създаваме я заедно с вас.</strong></p>
+          <p>С внимание към детайла и пространство, в което няма нужда да играете роля.</p>
+          <p>Вашата история е уникална и заслужава индивидуален подход, създаден специално за вас. Понякога промяната започва с едно изречение, друг път с един спомен или с позволението да споделите.</p>
+          <p><strong>Вашата история. Вашата глава.<br>
+          Вашата приказка.</strong></p>
+        </div>
+        <a href="https://patreon.com/NellyGocheva?utm_medium=unknown&utm_source=join_link&utm_campaign=creatorshare_creator&utm_content=copyLink" class="btn btn-big" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-patreon" style="margin-right:.5rem;"></i> Подкрепете ни
+        </a>
       </div>
 
       @if ($services->isNotEmpty())
@@ -66,7 +73,7 @@
                         <h5 class="mad-entity-title">
                           <a href="{{ route('services.show', $service) }}">{{ $service->title }}</a>
                         </h5>
-                        <p>{{ $service->excerpt }}</p>
+                        <p style="font-family:'Marck Script', cursive;">{{ $service->excerpt }}</p>
                         <a href="{{ route('services.show', $service) }}" class="mad-text-link">Прочети още</a>
                       </div>
                     </div>
@@ -102,7 +109,7 @@
                       <h4 class="mad-entity-title">
                         <a href="{{ route('events.show', $event) }}">{{ $event->title }}</a>
                       </h4>
-                      <p>{{ $event->excerpt }}</p>
+                      <p style="font-family:'Marck Script', cursive;">{{ $event->excerpt }}</p>
                       <div class="mad-entity-footer">
                         <a href="{{ route('events.show', $event) }}" class="mad-text-link">Прочети още</a>
                       </div>
@@ -152,13 +159,12 @@
                 <div class="mad-testimonial">
                   <div class="mad-testimonial-info">
                     <blockquote>
-                      <p>„Топла и професионална практика с терапевти, на които наистина им пука за клиентите. Винаги
-                        излизам с чувството, че съм чута."</p>
+                      <p>„Не очаквах, че четенето на приказки да се превърне в терапия и да ми повлияе толкова силно. В началото просто четях и се опитвах да разбера какво общо има историята с мен, но започнах да разпознавам свои чувства, страхове и ситуации в героите. Някои неща, за които ми е трудно да говоря директно, сякаш станаха много по-лесни за осмисляне чрез приказките."</p>
                     </blockquote>
                   </div>
                   <div class="mad-author">
                     <div class="mad-author-info">
-                      <span class="mad-author-name">— Клиент, Варна</span>
+                      <span class="mad-author-name">— Клиент на MindBloom</span>
                     </div>
                   </div>
                 </div>
@@ -167,13 +173,12 @@
                 <div class="mad-testimonial">
                   <div class="mad-testimonial-info">
                     <blockquote>
-                      <p>„Насочваха разговорите ни по начин, който ни помогна сами да стигнем до важни изводи, вместо
-                        просто да ни казват какво да правим."</p>
+                      <p>„Понякога човек влиза през една врата, без да знае, че зад нея го очаква нещо различно. Така започна и моето преживяване с приказките. С всяка среща думите сякаш отваряха малки вратички към местата в мен, които дълго бях оставяла незабележими, а историите вече не изглеждаха толкова страшни. Понякога е достатъчно да погледнеш на нея с други очи, а когато започнеш да го правиш, нещо вътре в теб тихичко се променя."</p>
                     </blockquote>
                   </div>
                   <div class="mad-author">
                     <div class="mad-author-info">
-                      <span class="mad-author-name">— Клиент от групова терапия</span>
+                      <span class="mad-author-name">— Клиент на MindBloom</span>
                     </div>
                   </div>
                 </div>
@@ -182,13 +187,12 @@
                 <div class="mad-testimonial">
                   <div class="mad-testimonial-info">
                     <blockquote>
-                      <p>„Почувствах се разбран от първата сесия, а състрадателният подход ми помогна да изградя
-                        истинска увереност в себе си с течение на времето."</p>
+                      <p>„За мен това не беше просто четене на приказка, а един много нежен начин да погледна себе си по-различен начин."</p>
                     </blockquote>
                   </div>
                   <div class="mad-author">
                     <div class="mad-author-info">
-                      <span class="mad-author-name">— Клиент от индивидуална терапия</span>
+                      <span class="mad-author-name">— Клиент на MindBloom</span>
                     </div>
                   </div>
                 </div>

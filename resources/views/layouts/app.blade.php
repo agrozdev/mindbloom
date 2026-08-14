@@ -8,6 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   @if (config('app.noindex'))
     <meta name="robots" content="noindex, nofollow" />
+  @else
+    <meta name="robots" content="index, follow" />
   @endif
   @if (config('services.google.site_verification'))
     <meta name="google-site-verification" content="{{ config('services.google.site_verification') }}" />
@@ -44,6 +46,43 @@
   {{-- Red theme override, colors from the MindBloom logo. Remove this line to revert to the original blue theme. --}}
   <link rel="stylesheet" href="{{ asset('css/theme-red.css') }}" />
   @stack('styles')
+  <script type="application/ld+json">
+    {
+      "@@context": "https://schema.org",
+      "@@graph": [
+        {
+          "@@type": "Psychologist",
+          "@@id": "{{ route('home') }}#business",
+          "name": "MindBloom",
+          "url": "{{ route('home') }}",
+          "logo": "{{ asset('images/logo-mindbloom.png') }}",
+          "image": "{{ asset('images/logo-mindbloom.png') }}",
+          "telephone": "+359897416375",
+          "email": "info@mindbloombg.com",
+          "address": {
+            "@@type": "PostalAddress",
+            "addressLocality": "Varna",
+            "addressCountry": "BG"
+          },
+          "openingHoursSpecification": {
+            "@@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "09:00",
+            "closes": "18:00"
+          },
+          "areaServed": { "@@type": "City", "name": "Varna" }
+        },
+        {
+          "@@type": "WebSite",
+          "@@id": "{{ route('home') }}#website",
+          "url": "{{ route('home') }}",
+          "name": "MindBloom",
+          "inLanguage": "bg",
+          "publisher": { "@@id": "{{ route('home') }}#business" }
+        }
+      ]
+    }
+  </script>
 </head>
 
 <body class="mad-body--scheme-brown">
