@@ -2,7 +2,7 @@
 <html lang="bg">
 
 <head>
-  <title>@yield('title', 'MindBloom') | Пространството, в което промяната намира своя път</title>
+  <title>@hasSection('meta_title')@yield('meta_title')@else@yield('title', 'MindBloom') | Пространството, в което промяната намира своя път@endif</title>
   <meta charset="UTF-8" />
   <meta name="description" content="@yield('meta_description', 'MindBloom — пространството, в което промяната намира своя път, във Варна с индивидуална терапия, групова терапия и уъркшопи.')" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -46,6 +46,7 @@
   {{-- Red theme override, colors from the MindBloom logo. Remove this line to revert to the original blue theme. --}}
   <link rel="stylesheet" href="{{ asset('css/theme-red.css') }}" />
   @stack('styles')
+  @stack('head-scripts')
   <script type="application/ld+json">
     {
       "@@context": "https://schema.org",

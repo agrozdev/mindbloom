@@ -21,7 +21,7 @@
         <div class="col-lg-8">
           @if ($post->featured_image)
             <div class="mad-entity-media content-element-4">
-              <img src="{{ asset('storage/' . $post->featured_image) }}" alt="{{ $post->title }}" />
+              <img src="{{ asset('storage/' . $post->featured_image) }}" alt="{{ $post->title }} — приказка с поука" />
             </div>
           @endif
           <div class="content-element-3" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; column-gap:1.5rem; row-gap:1rem;">

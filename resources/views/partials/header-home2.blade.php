@@ -1,6 +1,6 @@
 <div id="mad-nav-canvas" class="mad-nav-canvas full-screen">
   <button class="mad-nav-close"><img src="{{ asset('psychologist_icons_svg/close.svg') }}" alt="" class="svg" /></button>
-  <a href="{{ route('home') }}" class="mad-logo"><img src="{{ asset('images/logo-mindbloom.png') }}" alt="MindBloom" /></a>
+  <a href="{{ route('home') }}" class="mad-logo"><img src="{{ asset('images/logo-mindbloom.png') }}" alt="MindBloom — приказкотерапия" /></a>
   <div class="mad-nav-inner">
     <nav class="mad-vr-nav">
       <ul>
@@ -100,7 +100,7 @@
           </div>
         </div>
         <div class="mad-header-item">
-          <a href="{{ route('home') }}" class="logo"><img src="{{ asset('images/logo-mindbloom.png') }}" alt="MindBloom" /></a>
+          <a href="{{ route('home') }}" class="logo"><img src="{{ asset('images/logo-mindbloom.png') }}" alt="MindBloom — приказкотерапия" /></a>
         </div>
         <div class="mad-header-item">
           <div class="mad-actions">

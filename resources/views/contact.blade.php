@@ -1,12 +1,14 @@
 @extends('layouts.app')
 
 @section('title', 'Време за вас')
-@section('meta_description', 'Свържете се с MindBloom за безплатна консултация.')
+@section('meta_title', 'Запазете час за приказкотерапия | MindBloom Варна')
+@section('meta_description', 'Свържете се с MindBloom във Варна — запазете своето място за индивидуална сесия, група или уъркшоп. Приказкотерапия на живо и онлайн.')
 
 @section('content')
   <div class="mad-breadcrumb with-bg-img with-overlay" style="background-image:url('{{ asset('images/contact-banner.jpg') }}'); background-position:35% center;">
     <div class="container wide">
       <h1 class="mad-page-title">Време за вас</h1>
+      <h2 class="mad-page-subtitle">Запазете своето място за приказкотерапия — на живо и онлайн</h2>
       <nav class="mad-breadcrumb-path">
         <span><a href="{{ route('home') }}" class="mad-link">Начало</a></span> / <span>Време за вас</span>
       </nav>

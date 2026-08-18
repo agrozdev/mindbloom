@@ -25,7 +25,7 @@
                 <article class="mad-entity">
                   @if ($post->featured_image)
                     <div class="mad-entity-media">
-                      <a href="{{ route('blog.show', [$post->category, $post]) }}"><img src="{{ asset('storage/' . $post->featured_image) }}" alt="{{ $post->title }}" /></a>
+                      <a href="{{ route('blog.show', [$post->category, $post]) }}"><img src="{{ asset('storage/' . $post->featured_image) }}" alt="{{ $post->title }} — приказка с поука" /></a>
                     </div>
                   @endif
                   <div class="mad-entity-content">

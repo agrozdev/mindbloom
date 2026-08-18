@@ -1,12 +1,14 @@
 @extends('layouts.app')
 
 @section('title', 'Моят поглед')
-@section('meta_description', 'Философията и подходът на психотерапевтичната практика MindBloom — цялостен, интегративен поглед към терапията.')
+@section('meta_title', 'Моят поглед — приказкотерапевт във Варна | MindBloom')
+@section('meta_description', 'Запознайте се с подхода зад MindBloom — приказкотерапия за самоосъзнаване и емоционално равновесие. Личен, внимателен подход във Варна и онлайн.')
 
 @section('content')
   <div class="mad-breadcrumb with-bg-img with-overlay" style="background-image:url('{{ asset('images/1920x512_bg5.jpg') }}'); background-position:25% center;">
     <div class="container wide">
       <h1 class="mad-page-title">Моят поглед</h1>
+      <h2 class="mad-page-subtitle">Приказкотерапия за самоосъзнаване и емоционално равновесие</h2>
       <nav class="mad-breadcrumb-path">
         <span><a href="{{ route('home') }}" class="mad-link">Начало</a></span> / <span>Моят поглед</span>
       </nav>
@@ -17,7 +19,7 @@
     <div class="container">
       <div class="row vr-size-1">
         <div class="col-lg-6">
-          <img src="{{ asset('images/880x920_img1.jpg') }}" alt="MindBloom" class="w-100" />
+          <img src="{{ asset('images/880x920_img1.jpg') }}" alt="Приказкотерапевт във Варна — MindBloom" class="w-100" />
         </div>
         <div class="col-lg-6">
           <h2 class="mad-title">Пътуване</h2>

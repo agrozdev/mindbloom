@@ -21,7 +21,33 @@
     'serviceType' => 'Service',
     'description' => $service->excerpt,
   ];
+
+  $serviceSeoMeta = [
+    'individualna-terapiya' => [
+      'meta_title' => 'Индивидуална приказкотерапия за самоосъзнаване | MindBloom',
+      'meta_description' => 'Индивидуални сесии за самоосъзнаване чрез приказки във Варна и онлайн. Открийте вътрешна яснота и баланс в спокойно, безопасно пространство.',
+      'h2' => 'Индивидуални сесии за самоосъзнаване чрез приказки',
+      'image_alt' => 'Индивидуална приказкотерапия за самоосъзнаване',
+    ],
+    'grupova-terapiya' => [
+      'meta_title' => 'Групова терапия при стрес чрез приказки | MindBloom',
+      'meta_description' => 'Групови срещи за преодоляване на стрес чрез приказки — споделено пространство за спокойствие, увереност и подкрепа във Варна и онлайн.',
+      'h2' => 'Групови срещи за преодоляване на стрес чрез приказки',
+      'image_alt' => 'Групова приказкотерапия за справяне със стрес',
+    ],
+    'uyrkshopi' => [
+      'meta_title' => 'Уъркшопи с терапевтични приказки за развитие | MindBloom',
+      'meta_description' => 'Терапевтични уъркшопи с приказки за личностно развитие и вътрешна промяна. Тиха среща със себе си във Варна и онлайн — направете първата крачка.',
+      'h2' => 'Уъркшопи с терапевтични приказки за личностно развитие',
+      'image_alt' => 'Терапевтичен уъркшоп с приказки за личностно развитие',
+    ],
+  ][$service->slug] ?? null;
 @endphp
+
+@if ($serviceSeoMeta)
+  @section('meta_title', $serviceSeoMeta['meta_title'])
+  @section('meta_description', $serviceSeoMeta['meta_description'])
+@endif
 
 @push('scripts')
   <script type="application/ld+json">
@@ -42,6 +68,9 @@
   <div class="mad-breadcrumb with-bg-img with-overlay" style="background-image:url('{{ asset('images/1920x512_bg3.jpg') }}')">
     <div class="container wide">
       <h1 class="mad-page-title">{{ $service->title }}</h1>
+      @if ($serviceSeoMeta)
+        <h2 class="mad-page-subtitle">{{ $serviceSeoMeta['h2'] }}</h2>
+      @endif
       <nav class="mad-breadcrumb-path">
         <span><a href="{{ route('home') }}" class="mad-link">Начало</a></span> /
         <span><a href="{{ route('services.index') }}" class="mad-link">Нова посока</a></span> /
@@ -56,7 +85,7 @@
         <div class="col-lg-8">
           @if ($service->image)
             <div class="mad-entity-media content-element-4">
-              <img src="{{ asset('storage/' . $service->image) }}" alt="{{ $service->title }}" />
+              <img src="{{ asset('storage/' . $service->image) }}" alt="{{ $serviceSeoMeta['image_alt'] ?? $service->title }}" />
             </div>
           @endif
           <div class="mad-text-medium" style="font-family:'Marck Script', cursive;">

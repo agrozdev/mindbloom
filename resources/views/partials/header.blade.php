@@ -43,7 +43,7 @@
     <div class="container-fluid">
       <div class="mad-header-items">
         <div class="mad-header-item">
-          <a href="{{ route('home') }}" class="mad-logo"><img src="{{ asset('images/logo-mindbloom.png') }}" alt="MindBloom" /></a>
+          <a href="{{ route('home') }}" class="mad-logo"><img src="{{ asset('images/logo-mindbloom.png') }}" alt="MindBloom — приказкотерапия" /></a>
         </div>
         <div class="mad-header-item">
           <nav class="mad-navigation-container">

@@ -1,12 +1,14 @@
 @extends('layouts.app')
 
 @section('title', 'Вдъхновяващи истории')
-@section('meta_description', 'Вдъхновяващи истории и статии от практиката на MindBloom, подредени по категории.')
+@section('meta_title', 'Вдъхновяващи истории и приказки с поука | MindBloom')
+@section('meta_description', 'Терапевтични приказки с поука за деца и възрастни — истории за смелост, доброта и самоосъзнаване. Четете вдъхновяващи приказки от MindBloom.')
 
 @section('content')
   <div class="mad-breadcrumb with-bg-img with-overlay" style="background-image:url('{{ asset('images/1920x512_bg4.jpg') }}'); background-position:15% center;">
     <div class="container wide">
       <h1 class="mad-page-title">Вдъхновяващи истории</h1>
+      <h2 class="mad-page-subtitle">Терапевтични приказки с поука за деца и възрастни</h2>
       <nav class="mad-breadcrumb-path">
         <span><a href="{{ route('home') }}" class="mad-link">Начало</a></span> / <span>Вдъхновяващи истории</span>
       </nav>

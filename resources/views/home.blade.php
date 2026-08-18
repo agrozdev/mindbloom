@@ -1,7 +1,30 @@
 @extends('layouts.app')
 
 @section('title', 'Начало')
-@section('meta_description', 'MindBloom — пространството, в което промяната намира своя път, във Варна с индивидуална терапия, групова терапия и уъркшопи.')
+@section('meta_title', 'Приказкотерапия във Варна и онлайн | MindBloom')
+@section('meta_description', 'Приказкотерапия във Варна и онлайн — терапия чрез приказки за самоосъзнаване, вътрешно спокойствие и лична промяна. Направете първата крачка.')
+
+@push('head-scripts')
+  <script type="application/ld+json">
+    {
+      "@@context": "https://schema.org",
+      "@@type": "ProfessionalService",
+      "name": "MindBloom",
+      "description": "Приказкотерапия за самоосъзнаване, справяне със стрес и личностно развитие — за деца и възрастни.",
+      "url": "https://mindbloombg.com",
+      "telephone": "+359897416375",
+      "email": "info@mindbloombg.com",
+      "address": {
+        "@@type": "PostalAddress",
+        "addressLocality": "Варна",
+        "addressCountry": "BG"
+      },
+      "areaServed": ["Варна", "България", "Онлайн"],
+      "openingHours": "Mo-Fr 09:00-18:00",
+      "priceRange": "$$"
+    }
+  </script>
+@endpush
 
 @section('header')
   @include('partials.header-home2')
@@ -29,6 +52,9 @@
         <h1 class="mad-title">
           <span class="mad-hero-highlight">Затвори очи за момент… <br /> и усети какво има отвъд шума на ежедневието.</span>
         </h1>
+        <h2 class="mad-subtitle" style="font-size:1.15rem; font-weight:400; margin-top:.5rem;">
+          <span class="mad-hero-highlight">Приказкотерапия във Варна и онлайн — пространство за вътрешна промяна</span>
+        </h2>
         <p class="content-element-6">
           <b><span class="mad-hero-highlight" style="font-family:'Marck Script', cursive;">Вътре в теб съществува пространство на спокойствие, мъдрост и възстановяване. Място, до което можеш да
             достигнеш, когато си позволиш да се вслушаш по-дълбоко в себе си.</span></b>
@@ -146,7 +172,7 @@
             </div>
           </div>
           <div class="col-xl-6">
-            <div class="mad-img"><img src="{{ asset('images/880x808_img1.jpg') }}" alt="" /></div>
+            <div class="mad-img"><img src="{{ asset('images/880x808_img1.jpg') }}" alt="Приказкотерапия за вътрешно спокойствие във Варна" /></div>
           </div>
         </div>
       </div>
