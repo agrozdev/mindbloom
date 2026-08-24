@@ -31,7 +31,7 @@
             <h6 class="mad-widget-title">Нова посока</h6>
             <ul class="mad-vr-list">
               @foreach (\App\Models\Service::active()->limit(5)->get() as $footerService)
-                <li><a href="{{ route('services.show', $footerService) }}">✨ {{ $footerService->title }}</a></li>
+                <li><a href="{{ route('services.show', $footerService) }}"><span class="mad-submenu-icon" aria-hidden="true">✨</span> {{ $footerService->title }}</a></li>
               @endforeach
             </ul>
           </section>

@@ -3005,6 +3005,10 @@ html.with-src-menu .mad-back-to-top {
         flex-wrap: wrap;
         align-items: flex-start;
     }
+
+    .mad-submenu-icon {
+        display: inline;
+    }
 }
 
 /* Legal/policy pages: GDPR requires "clear and plain language", so the body
@@ -3051,6 +3055,10 @@ html.with-src-menu .mad-back-to-top {
     font-family: 'Marck Script', cursive;
     font-weight: normal;
     font-size: 1.375rem;
+}
+
+.mad-submenu-icon {
+    display: none;
 }
 
 .mad-footer .mad-legal-links>li>a {
