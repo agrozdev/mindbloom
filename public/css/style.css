@@ -1504,6 +1504,15 @@ html.with-src-menu .mad-back-to-top {
     color: var(--color-neutral-0);
 }
 
+.mad-page-subtitle {
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+
+.mad-breadcrumb.with-bg-img .mad-page-subtitle {
+    color: var(--color-neutral-0);
+}
+
 .mad-breadcrumb+.mad-section {
     z-index: 2;
     position: relative;

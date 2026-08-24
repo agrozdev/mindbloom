@@ -6,7 +6,7 @@
           <section class="mad-widget">
             <a href="{{ route('home') }}" class="mad-logo content-element-4"><img src="{{ asset('images/logo-mindbloom.png') }}" alt="MindBloom — приказкотерапия" /></a>
             <div class="content-element-4" style="font-family:'Marck Script', cursive;">
-              <p>Място, където умът се успокоява, сърцето си спомня, това което душата отдавна знае, а вътрешната
+              <p>Мястото, където умът се успокоява, сърцето си спомня, това което душата отдавна знае, а вътрешната
                 промяна започва с нежно и истинско осъзнаване.<br /><br />
                 Ексклузивно пространство за вътрешен баланс, лично израстване, представляващ деликатен процес на
                 промяна, в който срещаш себе си, по-нов, по-сигурен и дълбок начин.</p>
@@ -31,7 +31,7 @@
             <h6 class="mad-widget-title">Нова посока</h6>
             <ul class="mad-vr-list">
               @foreach (\App\Models\Service::active()->limit(5)->get() as $footerService)
-                <li><a href="{{ route('services.show', $footerService) }}">{{ $footerService->title }}</a></li>
+                <li><a href="{{ route('services.show', $footerService) }}">✨ {{ $footerService->title }}</a></li>
               @endforeach
             </ul>
           </section>
