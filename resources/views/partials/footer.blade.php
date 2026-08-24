@@ -11,7 +11,7 @@
                 Ексклузивно пространство за вътрешен баланс, лично израстване, представляващ деликатен процес на
                 промяна, в който срещаш себе си, по-нов, по-сигурен и дълбок начин.</p>
             </div>
-            <p class="copyrights">Всички права запазени &copy; {{ now()->year }} <a href="{{ route('home') }}">MindBloom</a>. Crafted by GrozdevDigital.</p>
+            <p class="copyrights">Всички права запазени &copy; {{ now()->year }} <a href="{{ route('home') }}">MindBloom</a>. Crafted by <a href="https://www.grozdevdigital.com/" target="_blank" rel="noopener">GrozdevDigital</a>.</p>
           </section>
         </div>
         <div class="col-xl-2 col-lg-3 col-sm-6">
