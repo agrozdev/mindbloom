@@ -3006,9 +3006,6 @@ html.with-src-menu .mad-back-to-top {
         align-items: flex-start;
     }
 
-    .mad-submenu-icon {
-        display: inline;
-    }
 }
 
 /* Legal/policy pages: GDPR requires "clear and plain language", so the body
@@ -3058,7 +3055,7 @@ html.with-src-menu .mad-back-to-top {
 }
 
 .mad-submenu-icon {
-    display: none;
+    display: inline;
 }
 
 .mad-footer .mad-legal-links>li>a {

@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('title', 'Начало')
-@section('meta_title', 'Приказкотерапия във Варна и онлайн | MindBloom')
-@section('meta_description', 'Приказкотерапия във Варна и онлайн — терапия чрез приказки за самоосъзнаване, вътрешно спокойствие и лична промяна. Направете първата крачка.')
+@section('meta_title', 'Терапия с приказки във Варна и онлайн | MindBloom')
+@section('meta_description', 'Терапия с приказки във Варна и онлайн — за самоосъзнаване, вътрешно спокойствие и лична промяна. Направете първата крачка.')
 
 @push('head-scripts')
   <script type="application/ld+json">
@@ -10,7 +10,7 @@
       "@@context": "https://schema.org",
       "@@type": "ProfessionalService",
       "name": "MindBloom",
-      "description": "Приказкотерапия за самоосъзнаване, справяне със стрес и личностно развитие — за деца и възрастни.",
+      "description": "Терапия с приказки за самоосъзнаване, справяне със стрес и личностно развитие — за деца и възрастни.",
       "url": "https://mindbloombg.com",
       "telephone": "+359897416375",
       "email": "info@mindbloombg.com",
@@ -53,7 +53,7 @@
           <span class="mad-hero-highlight">Затвори очи за момент… <br /> и усети какво има отвъд шума на ежедневието.</span>
         </h1>
         <h2 class="mad-subtitle" style="font-size:1.15rem; font-weight:400; margin-top:.5rem;">
-          <span class="mad-hero-highlight">Приказкотерапия във Варна и онлайн — пространство за вътрешна промяна</span>
+          <span class="mad-hero-highlight">Терапия с приказки във Варна и онлайн — пространство за вътрешна промяна</span>
         </h2>
         <p class="content-element-6">
           <b><span class="mad-hero-highlight" style="font-family:'Marck Script', cursive;">Вътре в теб съществува пространство на спокойствие, мъдрост и възстановяване. Място, до което можеш да
@@ -172,7 +172,7 @@
             </div>
           </div>
           <div class="col-xl-6">
-            <div class="mad-img"><img src="{{ asset('images/880x808_img1.jpg') }}" alt="Приказкотерапия за вътрешно спокойствие във Варна" /></div>
+            <div class="mad-img"><img src="{{ asset('images/880x808_img1.jpg') }}" alt="Терапия с приказки за вътрешно спокойствие във Варна" /></div>
           </div>
         </div>
       </div>
