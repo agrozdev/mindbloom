@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('title', $service->title)
-@section('meta_description', $service->excerpt)
 
 @php
   $serviceSchemaMeta = [
@@ -19,7 +18,7 @@
     ],
   ][$service->slug] ?? [
     'serviceType' => 'Service',
-    'description' => $service->excerpt,
+    'description' => $service->metaDescription(),
   ];
 
   $serviceSeoMeta = [
@@ -42,11 +41,17 @@
       'image_alt' => 'Терапевтичен уъркшоп с приказки за личностно развитие',
     ],
   ][$service->slug] ?? null;
+
+  // Hand-written copy for the known services, auto-built from the body otherwise.
+  // Set once here: a repeated @section(name, value) is a no-op unless the first
+  // carried @parent, so the override has to be resolved before the call.
+  $metaDescription = $serviceSeoMeta['meta_description'] ?? $service->metaDescription();
 @endphp
+
+@section('meta_description', $metaDescription)
 
 @if ($serviceSeoMeta)
   @section('meta_title', $serviceSeoMeta['meta_title'])
-  @section('meta_description', $serviceSeoMeta['meta_description'])
 @endif
 
 @push('scripts')

@@ -2,10 +2,16 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\HasMetaDescription;
 use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
+    use HasMetaDescription;
+
+    /** The long-text field to fall back to when building a meta description. */
+    protected $metaBodyField = 'description';
+
     protected $fillable = [
         'title',
         'slug',

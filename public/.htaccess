@@ -5,6 +5,16 @@
 
     RewriteEngine On
 
+    # Canonical host + scheme: force https:// and drop www in a single 301 hop.
+    # Scoped to the production domain so local dev (http://mindbloombg.loc) is untouched.
+    RewriteCond %{HTTP_HOST} ^(www\.)?mindbloombg\.com$ [NC]
+    RewriteCond %{HTTPS} !=on
+    RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+    RewriteRule ^ https://mindbloombg.com%{REQUEST_URI} [L,R=301]
+
+    RewriteCond %{HTTP_HOST} ^www\.mindbloombg\.com$ [NC]
+    RewriteRule ^ https://mindbloombg.com%{REQUEST_URI} [L,R=301]
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]

@@ -19,6 +19,14 @@
   @else
     <meta name="robots" content="index, follow" />
   @endif
+  {{-- Self-referencing canonical, built from APP_URL so scheme/host stay fixed
+       regardless of how the request arrived (www/non-www, http/https). A view
+       can point it elsewhere with @section('canonical', '...'). --}}
+  @hasSection('canonical')
+    <link rel="canonical" href="@yield('canonical')" />
+  @else
+    <link rel="canonical" href="{{ rtrim(config('app.url'), '/') }}/{{ ltrim(request()->path(), '/') }}" />
+  @endif
   @if (config('services.google.site_verification'))
     <meta name="google-site-verification" content="{{ config('services.google.site_verification') }}" />
   @endif

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', $event->title)
-@section('meta_description', $event->excerpt)
+@section('meta_description', $event->metaDescription())
 
 @section('content')
   <div class="mad-breadcrumb with-bg-img with-overlay" style="background-image:url('{{ asset('images/1920x512_bg4.jpg') }}'); background-position:15% center;">
