@@ -2268,3 +2268,47 @@
 		font-size: 1.25rem;
 	}
 }
+
+/* Services (type-5) cards on touch screens:
+   1. No :hover, so the JS never swaps .mad-entity-bg and every card ends up
+      showing a different scroll-dependent slice of the same fixed image.
+      Give each card its own image, centred with background-position, plus a
+      dark gradient for text legibility.
+   2. No :hover means the slide-up reveal never fires either — pin the content
+      open, but clamp the excerpt to a short teaser like the desktop state. */
+@media only screen and (max-width: 992px) {
+	.mad-entities.type-5 .mad-entity {
+		min-height: 26rem;
+		background-position: center center;
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+
+	.mad-entities.type-5 .mad-entity[data-bg-img="1"] {
+		background-image: linear-gradient(rgba(16, 28, 45, 0.4), rgba(16, 28, 45, 0.65)), url(../images/entity_bg1.jpg);
+	}
+
+	.mad-entities.type-5 .mad-entity[data-bg-img="2"] {
+		background-image: linear-gradient(rgba(16, 28, 45, 0.4), rgba(16, 28, 45, 0.65)), url(../images/entity_bg2.jpg);
+	}
+
+	.mad-entities.type-5 .mad-entity[data-bg-img="3"] {
+		background-image: linear-gradient(rgba(16, 28, 45, 0.4), rgba(16, 28, 45, 0.65)), url(../images/entity_bg3.jpg);
+	}
+
+	.mad-entities.type-5 .mad-entity[data-bg-img="4"] {
+		background-image: linear-gradient(rgba(16, 28, 45, 0.4), rgba(16, 28, 45, 0.65)), url(../images/entity_bg4.jpg);
+	}
+
+	.mad-entities.type-5 .mad-entity .mad-entity-content {
+		transform: none;
+	}
+
+	.mad-entities.type-5 .mad-entity .mad-entity-content p {
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+}

@@ -2,7 +2,15 @@
 <html lang="bg">
 
 <head>
-  <title>@hasSection('meta_title')@yield('meta_title')@else@yield('title', 'MindBloom') | Пространството, в което промяната намира своя път@endif</title>
+  {{-- Keep each @yield on its own line: Blade's single-pass compiler leaves a
+       second @yield uncompiled when it sits on the same line right after @else
+       (rendered "@yield('title', ...)" literally into <title> on /services and
+       every /blog/* page). --}}
+  @hasSection('meta_title')
+    <title>@yield('meta_title')</title>
+  @else
+    <title>@yield('title', 'MindBloom') | Пространството, в което промяната намира своя път</title>
+  @endif
   <meta charset="UTF-8" />
   <meta name="description" content="@yield('meta_description', 'MindBloom — пространството, в което промяната намира своя път, във Варна с индивидуална терапия, групова терапия и уъркшопи.')" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />

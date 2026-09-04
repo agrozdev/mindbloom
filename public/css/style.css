@@ -3058,6 +3058,14 @@ html.with-src-menu .mad-back-to-top {
     display: inline;
 }
 
+/* Keep footer submenu items (e.g. "Нова посока") on a single line on desktop
+   so the ✨ icon + cursive font don't push the last word onto a new row. */
+@media only screen and (min-width: 1200px) {
+    .mad-footer .mad-vr-list>li>a {
+        white-space: nowrap;
+    }
+}
+
 .mad-footer .mad-legal-links>li>a {
     font-family: 'Lato', sans-serif;
     font-size: 0.75rem;
