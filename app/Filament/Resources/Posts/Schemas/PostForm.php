@@ -22,7 +22,7 @@ class PostForm
                     ->live(onBlur: true)
                     ->maxLength(255)
                     ->afterStateUpdated(fn (string $operation, $state, callable $set) => $operation === 'create'
-                        ? $set('slug', \Illuminate\Support\Str::slug($state))
+                        ? $set('slug', \Illuminate\Support\Str::slug($state, '-', 'bg'))
                         : null),
                 TextInput::make('slug')
                     ->required()

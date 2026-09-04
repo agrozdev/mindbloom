@@ -18,5 +18,23 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        //
+        // Serve 301s for URLs whose slug changed (see `content:reslug` + the
+        // `redirects` table). Runs only when a request is about to 404, so it
+        // costs nothing on normal traffic, and covers both "no route matched"
+        // and "route matched but model binding failed".
+        $exceptions->render(function (
+            \Symfony\Component\HttpKernel\Exception\NotFoundHttpException $e,
+            \Illuminate\Http\Request $request,
+        ) {
+            $path = '/' . trim($request->path(), '/');
+            $redirect = \App\Models\Redirect::query()->where('from_path', $path)->first();
+
+            if ($redirect) {
+                $redirect->increment('hits');
+
+                return redirect($redirect->to_path, 301);
+            }
+
+            return null;
+        });
     })->create();

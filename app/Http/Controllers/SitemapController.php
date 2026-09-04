@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Models\Post;
-use App\Models\PostCategory;
 use App\Models\Service;
 use Illuminate\Http\Response;
 
@@ -48,15 +47,7 @@ class SitemapController extends Controller
             ];
         }
 
-        $categories = PostCategory::withMax('posts', 'updated_at')->has('posts')->get();
-        foreach ($categories as $category) {
-            $urls[] = [
-                'loc' => route('blog.category', $category),
-                'lastmod' => $category->posts_max_updated_at ?: $category->updated_at,
-                'changefreq' => 'weekly',
-                'priority' => '0.5',
-            ];
-        }
+        // Blog category listing pages are noindex (thin) — deliberately omitted.
 
         Post::published()->with('category')->get()
             ->filter(fn (Post $post) => $post->category !== null)

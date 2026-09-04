@@ -17,7 +17,8 @@
   @if (config('app.noindex'))
     <meta name="robots" content="noindex, nofollow" />
   @else
-    <meta name="robots" content="index, follow" />
+    {{-- A view can override with @section('meta_robots', 'noindex, follow') --}}
+    <meta name="robots" content="@yield('meta_robots', 'index, follow')" />
   @endif
   {{-- Self-referencing canonical, built from APP_URL so scheme/host stay fixed
        regardless of how the request arrived (www/non-www, http/https). A view
