@@ -62,3 +62,17 @@
         Header set Cache-Control "public, max-age=604800"
     </FilesMatch>
 </IfModule>
+
+# Text compression. woff2 and images are already compressed — don't re-encode them.
+<IfModule mod_brotli.c>
+    AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/xml text/css
+    AddOutputFilterByType BROTLI_COMPRESS application/javascript application/x-javascript
+    AddOutputFilterByType BROTLI_COMPRESS application/json application/xml application/rss+xml
+    AddOutputFilterByType BROTLI_COMPRESS image/svg+xml application/vnd.ms-fontobject font/ttf font/otf
+</IfModule>
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+    AddOutputFilterByType DEFLATE application/javascript application/x-javascript
+    AddOutputFilterByType DEFLATE application/json application/xml application/rss+xml
+    AddOutputFilterByType DEFLATE image/svg+xml application/vnd.ms-fontobject font/ttf font/otf
+</IfModule>
