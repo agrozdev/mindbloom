@@ -30,12 +30,15 @@
         <div class="mad-pre-title" style="font-weight:700; margin-bottom:1.5rem;">
           <span class="mad-hero-highlight">Пространството, в което промяната намира своя път · MindBloom</span>
         </div>
-        <h1 class="mad-title">
+        {{-- The visually-large poetic line stays styled by .mad-title but is an
+             <h2>; the <h1> is the keyword-bearing line (styled small). Tag swap
+             only — .mad-title / .mad-subtitle styling is class-based, not tag-based. --}}
+        <h2 class="mad-title">
           <span class="mad-hero-highlight">Затвори очи за момент… <br /> и усети какво има отвъд шума на ежедневието.</span>
-        </h1>
-        <h2 class="mad-subtitle" style="font-size:1.15rem; font-weight:400; margin-top:.5rem;">
-          <span class="mad-hero-highlight">Терапия с приказки във Варна и онлайн — пространство за вътрешна промяна</span>
         </h2>
+        <h1 class="mad-subtitle" style="font-size:1.15rem; font-weight:400; margin-top:.5rem;">
+          <span class="mad-hero-highlight">Терапия с приказки във Варна и онлайн — пространство за вътрешна промяна</span>
+        </h1>
         <p class="content-element-6">
           <b><span class="mad-hero-highlight" style="font-family:'Marck Script', cursive;">Вътре в теб съществува пространство на спокойствие, мъдрост и възстановяване. Място, до което можеш да
             достигнеш, когато си позволиш да се вслушаш по-дълбоко в себе си.</span></b>
