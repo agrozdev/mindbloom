@@ -3,6 +3,36 @@
 @section('title', $post->title)
 @section('meta_description', $post->metaDescription())
 
+@push('schema')
+  @php
+    $postUrl = route('blog.show', [$post->category, $post]);
+    // Built here, not in the {!! !!} echo: a bare "@context" key there is
+    // compiled as Blade's @context directive and corrupts the JSON.
+    $postSchemaJson = json_encode([
+        '@context' => 'https://schema.org',
+        '@type' => 'BlogPosting',
+        'headline' => $post->title,
+        'description' => $post->metaDescription(),
+        'mainEntityOfPage' => $postUrl,
+        'url' => $postUrl,
+        'inLanguage' => 'bg',
+        'image' => $post->featured_image ? asset('storage/' . $post->featured_image) : asset('images/logo-mindbloom.png'),
+        'datePublished' => optional($post->published_at)->toIso8601String(),
+        'dateModified' => optional($post->updated_at)->toIso8601String(),
+        'articleSection' => optional($post->category)->name,
+        'author' => ['@id' => route('home') . '#business'],
+        'publisher' => ['@id' => route('home') . '#business'],
+    ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+  @endphp
+  <script type="application/ld+json">{!! $postSchemaJson !!}</script>
+  @include('partials.schema-breadcrumb', ['items' => array_filter([
+      ['name' => 'Начало', 'url' => route('home')],
+      ['name' => 'Вдъхновяващи истории', 'url' => route('blog.index')],
+      $post->category ? ['name' => $post->category->name, 'url' => route('blog.category', $post->category)] : null,
+      ['name' => $post->title],
+  ])])
+@endpush
+
 @section('content')
   <div class="mad-breadcrumb with-bg-img with-overlay" style="background-image:url('{{ asset('images/1920x512_bg4.jpg') }}'); background-position:15% center;">
     <div class="container wide">

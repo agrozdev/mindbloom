@@ -63,43 +63,59 @@
   <link rel="stylesheet" href="{{ asset('css/theme-red.css') }}" />
   @stack('styles')
   @stack('head-scripts')
+  {{-- Site-wide entity graph. Every page reuses #business / #website by @id;
+       page templates push their own nodes (BlogPosting, Event, Service,
+       BreadcrumbList) via @stack('schema'). --}}
   <script type="application/ld+json">
-    {
-      "@@context": "https://schema.org",
-      "@@graph": [
-        {
-          "@@type": "Psychologist",
-          "@@id": "{{ route('home') }}#business",
-          "name": "MindBloom",
-          "url": "{{ route('home') }}",
-          "logo": "{{ asset('images/logo-mindbloom.png') }}",
-          "image": "{{ asset('images/logo-mindbloom.png') }}",
-          "telephone": "+359897416375",
-          "email": "info@mindbloombg.com",
-          "address": {
-            "@@type": "PostalAddress",
-            "addressLocality": "Varna",
-            "addressCountry": "BG"
-          },
-          "openingHoursSpecification": {
-            "@@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-            "opens": "09:00",
-            "closes": "18:00"
-          },
-          "areaServed": { "@@type": "City", "name": "Varna" }
-        },
-        {
-          "@@type": "WebSite",
-          "@@id": "{{ route('home') }}#website",
-          "url": "{{ route('home') }}",
-          "name": "MindBloom",
-          "inLanguage": "bg",
-          "publisher": { "@@id": "{{ route('home') }}#business" }
-        }
-      ]
-    }
+{!! json_encode([
+    '@context' => 'https://schema.org',
+    '@graph' => [
+        [
+            '@type' => 'Psychologist',
+            '@id' => route('home') . '#business',
+            'name' => 'MindBloom',
+            'url' => route('home'),
+            'logo' => asset('images/logo-mindbloom.png'),
+            'image' => asset('images/logo-mindbloom.png'),
+            'telephone' => '+359897416375',
+            'email' => 'info@mindbloombg.com',
+            'priceRange' => '$$',
+            'address' => [
+                '@type' => 'PostalAddress',
+                'addressLocality' => 'Varna',
+                'addressCountry' => 'BG',
+            ],
+            'areaServed' => [
+                ['@type' => 'City', 'name' => 'Varna'],
+                ['@type' => 'Country', 'name' => 'Bulgaria'],
+            ],
+            'availableChannel' => [
+                '@type' => 'ServiceChannel',
+                'name' => 'Онлайн сесии',
+                'availableLanguage' => ['bg'],
+            ],
+            'openingHoursSpecification' => [
+                '@type' => 'OpeningHoursSpecification',
+                'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+                'opens' => '09:00',
+                'closes' => '18:00',
+            ],
+            'sameAs' => [
+                'https://www.facebook.com/mybio.net',
+            ],
+        ],
+        [
+            '@type' => 'WebSite',
+            '@id' => route('home') . '#website',
+            'url' => route('home'),
+            'name' => 'MindBloom',
+            'inLanguage' => 'bg',
+            'publisher' => ['@id' => route('home') . '#business'],
+        ],
+    ],
+], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}
   </script>
+  @stack('schema')
 </head>
 
 <body class="mad-body--scheme-brown">

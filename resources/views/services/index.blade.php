@@ -3,6 +3,13 @@
 @section('title', 'Нова посока')
 @section('meta_description', 'Сесия за лична яснота, силата в споделеното и уъркшопи в практиката на MindBloom.')
 
+@push('schema')
+  @include('partials.schema-breadcrumb', ['items' => [
+      ['name' => 'Начало', 'url' => route('home')],
+      ['name' => 'Нова посока'],
+  ]])
+@endpush
+
 @section('content')
   <div class="mad-breadcrumb with-bg-img with-overlay" style="background-image:url('{{ asset('images/1920x512_bg3.jpg') }}')">
     <div class="container wide">

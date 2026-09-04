@@ -4,6 +4,13 @@
 @section('meta_title', 'Моят поглед — терапевт с приказки във Варна | MindBloom')
 @section('meta_description', 'Запознайте се с подхода зад MindBloom — терапия с приказки за самоосъзнаване и емоционално равновесие. Личен, внимателен подход във Варна и онлайн.')
 
+@push('schema')
+  @include('partials.schema-breadcrumb', ['items' => [
+      ['name' => 'Начало', 'url' => route('home')],
+      ['name' => 'Моят поглед'],
+  ]])
+@endpush
+
 @section('content')
   <div class="mad-breadcrumb with-bg-img with-overlay" style="background-image:url('{{ asset('images/1920x512_bg5.jpg') }}'); background-position:25% center;">
     <div class="container wide">

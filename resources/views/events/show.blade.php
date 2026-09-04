@@ -3,6 +3,49 @@
 @section('title', $event->title)
 @section('meta_description', $event->metaDescription())
 
+@push('schema')
+  @php
+    $eventUrl = route('events.show', $event);
+    $eventNode = [
+        '@context' => 'https://schema.org',
+        '@type' => 'Event',
+        'name' => $event->title,
+        'description' => $event->metaDescription(),
+        'url' => $eventUrl,
+        'inLanguage' => 'bg',
+        'eventAttendanceMode' => 'https://schema.org/OfflineEventAttendanceMode',
+        'eventStatus' => 'https://schema.org/EventScheduled',
+        'organizer' => ['@id' => route('home') . '#business'],
+    ];
+    if ($event->image) {
+        $eventNode['image'] = asset('storage/' . $event->image);
+    }
+    if ($event->starts_at) {
+        $eventNode['startDate'] = $event->starts_at->toIso8601String();
+    }
+    $eventNode['location'] = $event->location
+        ? ['@type' => 'Place', 'name' => $event->location, 'address' => $event->location]
+        : ['@type' => 'Place', 'name' => 'MindBloom, Варна', 'address' => ['@type' => 'PostalAddress', 'addressLocality' => 'Varna', 'addressCountry' => 'BG']];
+    if ($event->price !== null) {
+        $eventNode['offers'] = [
+            '@type' => 'Offer',
+            'price' => number_format((float) $event->price, 2, '.', ''),
+            'priceCurrency' => 'EUR',
+            'availability' => 'https://schema.org/InStock',
+            'url' => route('events.register', $event),
+        ];
+    }
+  @endphp
+  <script type="application/ld+json">
+{!! json_encode($eventNode, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}
+  </script>
+  @include('partials.schema-breadcrumb', ['items' => [
+      ['name' => 'Начало', 'url' => route('home')],
+      ['name' => 'Вълшебни срещи', 'url' => route('events.index')],
+      ['name' => $event->title],
+  ]])
+@endpush
+
 @section('content')
   <div class="mad-breadcrumb with-bg-img with-overlay" style="background-image:url('{{ asset('images/1920x512_bg4.jpg') }}'); background-position:15% center;">
     <div class="container wide">

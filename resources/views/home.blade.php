@@ -4,27 +4,8 @@
 @section('meta_title', 'Терапия с приказки във Варна и онлайн | MindBloom')
 @section('meta_description', 'Терапия с приказки във Варна и онлайн — за самоосъзнаване, вътрешно спокойствие и лична промяна. Направете първата крачка.')
 
-@push('head-scripts')
-  <script type="application/ld+json">
-    {
-      "@@context": "https://schema.org",
-      "@@type": "ProfessionalService",
-      "name": "MindBloom",
-      "description": "Терапия с приказки за самоосъзнаване, справяне със стрес и личностно развитие — за деца и възрастни.",
-      "url": "https://mindbloombg.com",
-      "telephone": "+359897416375",
-      "email": "info@mindbloombg.com",
-      "address": {
-        "@@type": "PostalAddress",
-        "addressLocality": "Варна",
-        "addressCountry": "BG"
-      },
-      "areaServed": ["Варна", "България", "Онлайн"],
-      "openingHours": "Mo-Fr 09:00-18:00",
-      "priceRange": "$$"
-    }
-  </script>
-@endpush
+{{-- Business/WebSite schema lives in layouts/app.blade.php (#business / #website)
+     and renders on every page — no page-specific node needed here. --}}
 
 @section('header')
   @include('partials.header-home2')

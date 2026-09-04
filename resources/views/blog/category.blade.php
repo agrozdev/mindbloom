@@ -3,6 +3,14 @@
 @section('title', $activeCategory->name)
 @section('meta_description', 'Вдъхновяващи истории и статии от практиката на MindBloom в категория ' . $activeCategory->name . '.')
 
+@push('schema')
+  @include('partials.schema-breadcrumb', ['items' => [
+      ['name' => 'Начало', 'url' => route('home')],
+      ['name' => 'Вдъхновяващи истории', 'url' => route('blog.index')],
+      ['name' => $activeCategory->name],
+  ]])
+@endpush
+
 @section('content')
   <div class="mad-breadcrumb with-bg-img with-overlay" style="background-image:url('{{ asset('images/1920x512_bg4.jpg') }}'); background-position:15% center;">
     <div class="container wide">

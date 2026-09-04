@@ -4,6 +4,28 @@
 @section('meta_title', 'Събития и семинари за справяне със стреса | MindBloom')
 @section('meta_description', 'Предстоящи приказни събития, семинари за справяне със стреса и групови срещи за подкрепа във Варна. Вижте кога е следващата ни среща.')
 
+@push('schema')
+  @include('partials.schema-breadcrumb', ['items' => [
+      ['name' => 'Начало', 'url' => route('home')],
+      ['name' => 'Вълшебни срещи'],
+  ]])
+  @php
+    $eventsListJson = $events->isNotEmpty() ? json_encode([
+        '@context' => 'https://schema.org',
+        '@type' => 'ItemList',
+        'itemListElement' => $events->values()->map(fn ($e, $i) => [
+            '@type' => 'ListItem',
+            'position' => $i + 1,
+            'url' => route('events.show', $e),
+            'name' => $e->title,
+        ])->all(),
+    ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) : null;
+  @endphp
+  @if ($eventsListJson)
+    <script type="application/ld+json">{!! $eventsListJson !!}</script>
+  @endif
+@endpush
+
 @section('content')
   <div class="mad-breadcrumb with-bg-img with-overlay" style="background-image:url('{{ asset('images/events-index-banner.jpg') }}'); background-position:35% center;">
     <div class="container wide">

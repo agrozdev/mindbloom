@@ -4,6 +4,13 @@
 @section('meta_title', 'Запазете час за терапия с приказки | MindBloom Варна')
 @section('meta_description', 'Свържете се с MindBloom във Варна — запазете своето място за индивидуална сесия, група или уъркшоп. Терапия с приказки на живо и онлайн.')
 
+@push('schema')
+  @include('partials.schema-breadcrumb', ['items' => [
+      ['name' => 'Начало', 'url' => route('home')],
+      ['name' => 'Време за вас'],
+  ]])
+@endpush
+
 @section('content')
   <div class="mad-breadcrumb with-bg-img with-overlay" style="background-image:url('{{ asset('images/contact-banner.jpg') }}'); background-position:35% center;">
     <div class="container wide">

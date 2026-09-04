@@ -67,6 +67,11 @@
       "areaServed": { "@@type": "City", "name": "Varna" }
     }
   </script>
+  @include('partials.schema-breadcrumb', ['items' => [
+      ['name' => 'Начало', 'url' => route('home')],
+      ['name' => 'Нова посока', 'url' => route('services.index')],
+      ['name' => $service->title],
+  ]])
 @endpush
 
 @section('content')
