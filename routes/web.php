@@ -10,6 +10,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PostQuestionController;
 use App\Http\Controllers\PostUnlockController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'home'])->name('home');
@@ -42,3 +43,5 @@ Route::post('/newsletter', [NewsletterController::class, 'store'])->name('newsle
 Route::get('/politika-za-poveritelnost', [PageController::class, 'privacyPolicy'])->name('legal.privacy');
 Route::get('/obshti-usloviya-za-polzvane', [PageController::class, 'termsOfUse'])->name('legal.terms');
 Route::get('/politika-za-biskvitkite', [PageController::class, 'cookiePolicy'])->name('legal.cookies');
+
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');

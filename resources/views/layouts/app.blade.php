@@ -30,7 +30,11 @@
   @if (config('services.google.site_verification'))
     <meta name="google-site-verification" content="{{ config('services.google.site_verification') }}" />
   @endif
-  <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}" />
+  <link rel="icon" href="{{ asset('images/favicon.ico') }}" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon-32x32.png') }}" />
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon-16x16.png') }}" />
+  <link rel="apple-touch-icon" href="{{ asset('images/apple-touch-icon.png') }}" />
+  <meta name="theme-color" content="#A31C1C" />
   @if (config('services.google.analytics_id'))
     {{-- Google Consent Mode: analytics stays denied until the visitor accepts the cookie banner. --}}
     <script>
