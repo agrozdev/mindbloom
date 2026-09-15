@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('title', $post->title)
+@section('meta_title', $post->title . ' | MindBloom')
 @section('meta_description', $post->metaDescription())
 
 @push('schema')

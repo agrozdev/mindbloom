@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('title', $activeCategory->name)
+@section('meta_title', $activeCategory->name . ' — приказки с поука | MindBloom')
 @section('meta_description', 'Вдъхновяващи истории и статии от практиката на MindBloom в категория ' . $activeCategory->name . '.')
 {{-- Thin listing page: keep it out of the index but let Google follow through
      to the articles. Revisit once each category gets a unique intro (H-3 / C1). --}}

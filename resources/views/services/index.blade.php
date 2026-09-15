@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Нова посока')
+@section('meta_title', 'Нова посока — услуги за терапия с приказки във Варна | MindBloom')
 @section('meta_description', 'Сесия за лична яснота, силата в споделеното и уъркшопи в практиката на MindBloom.')
 
 @push('schema')
