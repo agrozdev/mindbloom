@@ -12,6 +12,7 @@ class PostCategory extends Model
     protected $fillable = [
         'name',
         'slug',
+        'meta_description',
     ];
 
     public function getRouteKeyName(): string
