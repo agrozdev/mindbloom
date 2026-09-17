@@ -52,6 +52,26 @@
       gtag('config', '{{ config('services.google.analytics_id') }}');
     </script>
   @endif
+  @if (config('services.meta.pixel_id'))
+    {{-- Meta Pixel: defined here but not fired. Meta has no consent-mode API
+         like Google's, so instead window.loadMetaPixel() is only called from
+         cookie-consent.js once the visitor accepts cookies (or already has). --}}
+    <script>
+      window.loadMetaPixel = function () {
+        if (window.fbq) return;
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '{{ config('services.meta.pixel_id') }}');
+        fbq('track', 'PageView');
+      };
+    </script>
+  @endif
   <link
     href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Lato:wght@300;400;700&display=swap"
     rel="stylesheet" />
@@ -73,7 +93,9 @@
        BreadcrumbList) via @stack('schema'). --}}
   <script type="application/ld+json">
 {!! json_encode([
-    '@context' => 'https://schema.org',
+    {{-- @@ escapes Blade's own @context/@endcontext directive, which otherwise
+         text-matches this literal schema.org key and corrupts it at compile time. --}}
+    '@@context' => 'https://schema.org',
     '@graph' => [
         [
             '@type' => 'Psychologist',

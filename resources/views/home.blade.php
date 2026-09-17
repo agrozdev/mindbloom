@@ -27,8 +27,8 @@
             -webkit-box-decoration-break: clone;
           }
         </style>
-        <div class="mad-pre-title" style="font-weight:700; margin-bottom:1.5rem;">
-          <span class="mad-hero-highlight">Пространството, в което промяната намира своя път · MindBloom</span>
+        <div class="mad-pre-title" style="font-weight:700; margin-bottom:1.5rem; text-transform:none;">
+          <span class="mad-hero-highlight" style="font-family:'Marck Script', cursive;">С Уважение към вашите мисли, нужди, избори и мечти - MindBloom</span>
         </div>
         {{-- The visually-large poetic line stays styled by .mad-title but is an
              <h2>; the <h1> is the keyword-bearing line (styled small). Tag swap

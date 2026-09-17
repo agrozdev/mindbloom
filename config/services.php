@@ -40,6 +40,10 @@ return [
         'site_verification' => env('GOOGLE_SITE_VERIFICATION'),
     ],
 
+    'meta' => [
+        'pixel_id' => env('META_PIXEL_ID'),
+    ],
+
     'mypos' => [
         'sandbox' => env('MYPOS_SANDBOX', true),
         'config_package' => env('MYPOS_CONFIG_PACKAGE'),

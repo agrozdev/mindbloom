@@ -6510,6 +6510,14 @@ table.mad-table--vertical tr th {
     height: 100%;
 }
 
+/* Owl Carousel's own CSS sets touch-action: none on .owl-drag .owl-item,
+   which blocks native page scrolling on mobile as soon as a touch starts
+   on a slide (e.g. the home page testimonials). pan-y keeps horizontal
+   swipe-to-change-slide working while letting the page scroll vertically. */
+.owl-carousel.owl-drag .owl-item {
+    touch-action: pan-y;
+}
+
 .mad-owl-center .owl-item {
     overflow: hidden;
     border-radius: var(--br-main);

@@ -9,11 +9,17 @@
   function applyStoredConsent() {
     var stored = window.localStorage.getItem(STORAGE_KEY);
 
-    if (stored === 'accepted' && typeof window.gtag === 'function') {
-      window.gtag('consent', 'update', {
-        analytics_storage: 'granted',
-        ad_storage: 'granted',
-      });
+    if (stored === 'accepted') {
+      if (typeof window.gtag === 'function') {
+        window.gtag('consent', 'update', {
+          analytics_storage: 'granted',
+          ad_storage: 'granted',
+        });
+      }
+
+      if (typeof window.loadMetaPixel === 'function') {
+        window.loadMetaPixel();
+      }
     }
 
     return stored;
@@ -23,11 +29,17 @@
     window.localStorage.setItem(STORAGE_KEY, value);
     banner.classList.remove('is-visible');
 
-    if (value === 'accepted' && typeof window.gtag === 'function') {
-      window.gtag('consent', 'update', {
-        analytics_storage: 'granted',
-        ad_storage: 'granted',
-      });
+    if (value === 'accepted') {
+      if (typeof window.gtag === 'function') {
+        window.gtag('consent', 'update', {
+          analytics_storage: 'granted',
+          ad_storage: 'granted',
+        });
+      }
+
+      if (typeof window.loadMetaPixel === 'function') {
+        window.loadMetaPixel();
+      }
     }
   }
 
