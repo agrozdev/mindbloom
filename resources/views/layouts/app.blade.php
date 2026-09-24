@@ -31,6 +31,22 @@
   @if (config('services.google.site_verification'))
     <meta name="google-site-verification" content="{{ config('services.google.site_verification') }}" />
   @endif
+  {{-- Open Graph / Twitter Card. Sitewide defaults below (same copy as the
+       plain <title>/description defaults above); a view can override any
+       of these with @section('og_title', ...) / og_description / og_image
+       / og_type - blog/show.blade.php already does, see there for the
+       pattern to copy on other content-bearing pages. --}}
+  <meta property="og:type" content="@yield('og_type', 'website')" />
+  <meta property="og:site_name" content="MindBloom" />
+  <meta property="og:locale" content="bg_BG" />
+  <meta property="og:url" content="{{ url()->current() }}" />
+  <meta property="og:title" content="@yield('og_title', 'MindBloom | Пространството, в което промяната намира своя път')" />
+  <meta property="og:description" content="@yield('og_description', 'MindBloom — пространството, в което промяната намира своя път, във Варна с индивидуална терапия, групова терапия и уъркшопи.')" />
+  <meta property="og:image" content="@yield('og_image', asset('images/logo-mindbloom.png'))" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="@yield('og_title', 'MindBloom | Пространството, в което промяната намира своя път')" />
+  <meta name="twitter:description" content="@yield('og_description', 'MindBloom — пространството, в което промяната намира своя път, във Варна с индивидуална терапия, групова терапия и уъркшопи.')" />
+  <meta name="twitter:image" content="@yield('og_image', asset('images/logo-mindbloom.png'))" />
   <link rel="icon" href="{{ asset('images/favicon.ico') }}" sizes="any" />
   <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon-32x32.png') }}" />
   <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon-16x16.png') }}" />

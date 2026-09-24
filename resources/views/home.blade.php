@@ -4,6 +4,9 @@
 @section('meta_title', 'Терапия с приказки във Варна и онлайн | MindBloom')
 @section('meta_description', 'Терапия с приказки във Варна и онлайн — за самоосъзнаване, вътрешно спокойствие и лична промяна. Направете първата крачка.')
 
+@section('og_title', 'Терапия с приказки във Варна и онлайн | MindBloom')
+@section('og_description', 'Терапия с приказки във Варна и онлайн — за самоосъзнаване, вътрешно спокойствие и лична промяна. Направете първата крачка.')
+
 {{-- Business/WebSite schema lives in layouts/app.blade.php (#business / #website)
      and renders on every page — no page-specific node needed here. --}}
 
@@ -27,7 +30,7 @@
             -webkit-box-decoration-break: clone;
           }
         </style>
-        <div class="mad-pre-title" style="font-weight:700; margin-bottom:1.5rem; text-transform:none;">
+        <div class="mad-pre-title" style="font-weight:700; margin-bottom:1.5rem; text-transform:none; font-size:1.5rem; line-height:2rem;">
           <span class="mad-hero-highlight" style="font-family:'Marck Script', cursive;">С Уважение към вашите мисли, нужди, избори и мечти - MindBloom</span>
         </div>
         {{-- The visually-large poetic line stays styled by .mad-title but is an

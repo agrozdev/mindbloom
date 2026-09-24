@@ -4,6 +4,11 @@
 @section('meta_title', $post->title . ' | MindBloom')
 @section('meta_description', $post->metaDescription())
 
+@section('og_type', 'article')
+@section('og_title', $post->title . ' | MindBloom')
+@section('og_description', $post->metaDescription())
+@section('og_image', $post->featured_image ? asset('storage/' . $post->featured_image) : asset('images/logo-mindbloom.png'))
+
 @push('schema')
   @php
     $postUrl = route('blog.show', [$post->category, $post]);
