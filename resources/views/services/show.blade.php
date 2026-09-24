@@ -25,19 +25,19 @@
     'individualna-terapiya' => [
       'meta_title' => 'Индивидуална терапия с приказки за самоосъзнаване | MindBloom',
       'meta_description' => 'Индивидуални сесии за самоосъзнаване чрез приказки във Варна и онлайн. Открийте вътрешна яснота и баланс в спокойно, безопасно пространство.',
-      'h2' => 'Индивидуални сесии за самоосъзнаване чрез приказки',
+      'h1' => 'Индивидуална терапия с приказки във Варна и онлайн',
       'image_alt' => 'Индивидуална терапия с приказки за самоосъзнаване',
     ],
     'grupova-terapiya' => [
       'meta_title' => 'Групова терапия при стрес чрез приказки | MindBloom',
       'meta_description' => 'Групови срещи за преодоляване на стрес чрез приказки — споделено пространство за спокойствие, увереност и подкрепа във Варна и онлайн.',
-      'h2' => 'Групови срещи за преодоляване на стрес чрез приказки',
+      'h1' => 'Групова терапия с приказки при стрес във Варна и онлайн',
       'image_alt' => 'Групова терапия с приказки за справяне със стрес',
     ],
     'uyrkshopi' => [
       'meta_title' => 'Уъркшопи с терапевтични приказки за развитие | MindBloom',
       'meta_description' => 'Терапевтични уъркшопи с приказки за личностно развитие и вътрешна промяна. Тиха среща със себе си във Варна и онлайн — направете първата крачка.',
-      'h2' => 'Уъркшопи с терапевтични приказки за личностно развитие',
+      'h1' => 'Уъркшопи с терапевтични приказки във Варна и онлайн',
       'image_alt' => 'Терапевтичен уъркшоп с приказки за личностно развитие',
     ],
   ][$service->slug] ?? null;
@@ -53,6 +53,28 @@
 @if ($serviceSeoMeta)
   @section('meta_title', $serviceSeoMeta['meta_title'])
 @endif
+
+@push('styles')
+  <style>
+    /* Keep the swapped headings visually identical to the old h1/h2 pair. */
+    .mad-breadcrumb .mad-page-title--poetic {
+      font-family: 'Marck Script', cursive;
+      font-weight: 400;
+      letter-spacing: -0.75px;
+      font-size: 3.75rem;
+      line-height: 4.5rem;
+    }
+    .mad-breadcrumb h1.mad-page-subtitle:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+    @media only screen and (max-width: 520px) {
+      .mad-breadcrumb .mad-page-title--poetic {
+        font-size: 2.5rem;
+        line-height: 3rem;
+      }
+    }
+  </style>
+@endpush
 
 @push('scripts')
   <script type="application/ld+json">
@@ -77,9 +99,15 @@
 @section('content')
   <div class="mad-breadcrumb with-bg-img with-overlay" style="background-image:url('{{ asset('images/1920x512_bg3.jpg') }}')">
     <div class="container wide">
-      <h1 class="mad-page-title">{{ $service->title }}</h1>
+      {{-- For the known services the descriptive line is the <h1> (what the
+           page is actually about, for search) and the poetic title is a
+           styled <p>; both look exactly as before, see the styles pushed
+           above. Unknown services keep the plain title as <h1>. --}}
       @if ($serviceSeoMeta)
-        <h2 class="mad-page-subtitle">{{ $serviceSeoMeta['h2'] }}</h2>
+        <p class="mad-page-title mad-page-title--poetic">{{ $service->title }}</p>
+        <h1 class="mad-page-subtitle">{{ $serviceSeoMeta['h1'] }}</h1>
+      @else
+        <h1 class="mad-page-title">{{ $service->title }}</h1>
       @endif
       <nav class="mad-breadcrumb-path">
         <span><a href="{{ route('home') }}" class="mad-link">Начало</a></span> /
