@@ -5,6 +5,16 @@
 
     RewriteEngine On
 
+    # 301 any URL requested with a literal /public/ prefix back to the clean
+    # path, so /public/... is no longer a crawlable mirror of the whole site.
+    # It has to live here, not in the parent .htaccess: requests under
+    # /public/ only ever run this directory's rewrite rules. THE_REQUEST is
+    # the original request line, so the parent's internal rewrite into
+    # public/ never triggers it. The query string is carried over by Apache
+    # itself - putting "?" in the substitution gets a 403 on current Apache.
+    RewriteCond %{THE_REQUEST} \s/public/([^\s?]*) [NC]
+    RewriteRule ^ /%1 [R=301,L,NE]
+
     # Canonical host + scheme: force https:// and drop www in a single 301 hop.
     # Scoped to the production domain so local dev (http://mindbloombg.loc) is untouched.
     RewriteCond %{HTTP_HOST} ^(www\.)?mindbloombg\.com$ [NC]
