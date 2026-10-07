@@ -6,40 +6,65 @@
     return;
   }
 
-  function applyStoredConsent() {
-    var stored = window.localStorage.getItem(STORAGE_KEY);
+  function grantConsent() {
+    if (typeof window.loadGoogleAnalytics === 'function') {
+      window.loadGoogleAnalytics();
+    }
 
-    if (stored === 'accepted') {
-      if (typeof window.gtag === 'function') {
-        window.gtag('consent', 'update', {
-          analytics_storage: 'granted',
-          ad_storage: 'granted',
+    if (typeof window.loadMetaPixel === 'function') {
+      window.loadMetaPixel();
+    }
+  }
+
+  // Used when a visitor rejects, including after having accepted earlier via
+  // the "change cookie settings" button: stop GA and remove its cookies.
+  function revokeConsent() {
+    if (window.gaMeasurementId) {
+      window['ga-disable-' + window.gaMeasurementId] = true;
+    }
+
+    if (window.gaLoaded && typeof window.gtag === 'function') {
+      window.gtag('consent', 'update', { analytics_storage: 'denied' });
+    }
+
+    var domain = window.location.hostname.replace(/^www\./, '');
+
+    document.cookie.split(';').forEach(function (cookie) {
+      var name = cookie.split('=')[0].trim();
+
+      if (/^(_ga|_gid|_gat)/.test(name)) {
+        [domain, '.' + domain, ''].forEach(function (d) {
+          document.cookie = name + '=; Max-Age=0; path=/' + (d ? '; domain=' + d : '');
         });
       }
+    });
+  }
 
-      if (typeof window.loadMetaPixel === 'function') {
-        window.loadMetaPixel();
-      }
+  function applyStoredConsent() {
+    var stored = null;
+
+    try {
+      stored = window.localStorage.getItem(STORAGE_KEY);
+    } catch (e) {}
+
+    if (stored === 'accepted') {
+      grantConsent();
     }
 
     return stored;
   }
 
   function setConsent(value) {
-    window.localStorage.setItem(STORAGE_KEY, value);
+    try {
+      window.localStorage.setItem(STORAGE_KEY, value);
+    } catch (e) {}
+
     banner.classList.remove('is-visible');
 
     if (value === 'accepted') {
-      if (typeof window.gtag === 'function') {
-        window.gtag('consent', 'update', {
-          analytics_storage: 'granted',
-          ad_storage: 'granted',
-        });
-      }
-
-      if (typeof window.loadMetaPixel === 'function') {
-        window.loadMetaPixel();
-      }
+      grantConsent();
+    } else {
+      revokeConsent();
     }
   }
 

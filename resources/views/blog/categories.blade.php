@@ -36,6 +36,27 @@
           <p class="text-center">Все още няма създадени категории.</p>
         @endif
       </div>
+
+      @if ($categories->sum('posts_count') > 0)
+        <div class="mad-section">
+          <div class="container">
+            <h2 class="mad-title content-element-4">Всички истории</h2>
+            <div class="row">
+              @foreach ($categories as $category)
+                @continue($category->posts->isEmpty())
+                <div class="col-md-6 col-lg-4 content-element-4">
+                  <h3 class="mad-widget-title"><a href="{{ route('blog.category', $category) }}">{{ $category->name }}</a></h3>
+                  <ul class="mad-vr-list">
+                    @foreach ($category->posts as $categoryPost)
+                      <li><a href="{{ route('blog.show', [$category, $categoryPost]) }}">{{ $categoryPost->title }}</a></li>
+                    @endforeach
+                  </ul>
+                </div>
+              @endforeach
+            </div>
+          </div>
+        </div>
+      @endif
     </div>
   </div>
 @endsection

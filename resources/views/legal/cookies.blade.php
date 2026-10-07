@@ -89,10 +89,6 @@
                 </tbody>
               </table>
             </div>
-            <p>
-              <em>Google Analytics в момента не е активен на Сайта. Тази таблица се прилага автоматично
-              от момента, в който отчитането бъде включено.</em>
-            </p>
 
             <h4 class="mad-title">3. Как да управлявате съгласието си</h4>
             <p>
@@ -112,7 +108,7 @@
 
             <h4 class="mad-title">4. Бисквитки на трети страни</h4>
             <p>
-              Когато е активирана, Google Analytics поставя собствени бисквитки съгласно политиката на
+              Google Analytics поставя собствени бисквитки съгласно политиката на
               Google за поверителност. Повече информация можете да намерите на
               <a href="https://policies.google.com/technologies/cookies" target="_blank" rel="noopener">policies.google.com/technologies/cookies</a>.
             </p>

@@ -2625,7 +2625,7 @@ var Mad = (function ($) {
         }
       )
 
-      $('#mad-nav-btn').on('click', function (e) {
+      $('#mad-nav-btn, #mad-nav-btn-mobile').on('click', function (e) {
         e.preventDefault()
         $('html').addClass('with-src-menu')
         $(this).toggleClass('mad-opened')

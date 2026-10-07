@@ -53,19 +53,34 @@
   <link rel="apple-touch-icon" href="{{ asset('images/apple-touch-icon.png') }}" />
   <meta name="theme-color" content="#A31C1C" />
   @if (config('services.google.analytics_id'))
-    {{-- Google Consent Mode: analytics stays denied until the visitor accepts the cookie banner. --}}
+    {{-- Google Analytics: defined here but not loaded (basic consent mode).
+         window.loadGoogleAnalytics() is only called from cookie-consent.js once
+         the visitor accepts cookies (or already has), so nothing is sent to
+         Google before consent. --}}
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() { dataLayer.push(arguments); }
-      gtag('consent', 'default', {
-        analytics_storage: 'denied',
-        ad_storage: 'denied',
-      });
-    </script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ config('services.google.analytics_id') }}"></script>
-    <script>
-      gtag('js', new Date());
-      gtag('config', '{{ config('services.google.analytics_id') }}');
+      window.gaMeasurementId = '{{ config('services.google.analytics_id') }}';
+      window.loadGoogleAnalytics = function () {
+        window['ga-disable-' + window.gaMeasurementId] = false;
+        if (window.gaLoaded) {
+          gtag('consent', 'update', { analytics_storage: 'granted' });
+          return;
+        }
+        window.gaLoaded = true;
+        gtag('consent', 'default', {
+          analytics_storage: 'granted',
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied',
+        });
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + window.gaMeasurementId;
+        document.head.appendChild(s);
+        gtag('js', new Date());
+        gtag('config', window.gaMeasurementId);
+      };
     </script>
   @endif
   @if (config('services.meta.pixel_id'))

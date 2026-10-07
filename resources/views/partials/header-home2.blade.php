@@ -80,7 +80,7 @@
   <div class="mad-middle-header mad-header-section--sticky-xl">
     <div class="container-fluid">
       <div class="mad-header-items">
-        <div class="mad-header-item">
+        <div class="mad-header-item mad-header-desktop-actions">
           <div class="mad-actions">
             <div class="mad-col">
               <button id="mad-nav-btn" class="mad-nav-btn">
@@ -114,8 +114,14 @@
                 </div>
               </div>
             </div>
-            <div class="mad-col">
+            <div class="mad-col mad-header-cta">
               <a href="{{ route('contact') }}" class="btn">ЗАПАЗИ СВОЕТО МЯСТО</a>
+            </div>
+            <div class="mad-col mad-header-mobile-menu">
+              <button id="mad-nav-btn-mobile" class="mad-nav-btn" aria-label="Меню">
+                <span class="line line-top"></span><span class="line line-center"></span><span class="line line-bottom"></span>
+              </button>
+              <a href="https://www.facebook.com/mybio.net" target="_blank" rel="noopener noreferrer" class="mad-header-mobile-fb" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
             </div>
           </div>
         </div>

@@ -105,10 +105,13 @@
         <div class="col-lg-4">
           <h6 class="mad-widget-title">Още истории</h6>
           <ul class="mad-vr-list">
-            @foreach (\App\Models\Post::published()->where('id', '!=', $post->id)->limit(6)->get() as $other)
+            @foreach ($relatedPosts as $other)
               <li><a href="{{ route('blog.show', [$other->category, $other]) }}">{{ $other->title }}</a></li>
             @endforeach
           </ul>
+          @if ($post->category)
+            <p><a href="{{ route('blog.category', $post->category) }}" class="mad-text-link">Всички истории от „{{ $post->category->name }}“</a></p>
+          @endif
         </div>
       </div>
     </div>
