@@ -39,6 +39,14 @@ class Comment extends Model
         return $query->whereNull('approved_at');
     }
 
+    /**
+     * Only the first name is shown publicly: "Атанас Гроздев" -> "Атанас".
+     */
+    public function publicName(): string
+    {
+        return strtok(trim($this->name), " \t") ?: $this->name;
+    }
+
     public function isApproved(): bool
     {
         return $this->approved_at !== null;

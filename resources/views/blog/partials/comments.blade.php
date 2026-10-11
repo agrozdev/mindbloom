@@ -11,7 +11,7 @@
       @foreach ($comments as $comment)
         <li class="mad-story-comment">
           <div class="mad-story-comment-meta">
-            <strong>{{ $comment->name }}</strong>
+            <strong>{{ $comment->publicName() }}</strong>
             <span>{{ $comment->approved_at->translatedFormat('j F Y') }}</span>
           </div>
           <p>{{ $comment->body }}</p>
