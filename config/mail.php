@@ -128,4 +128,10 @@ return [
 
     'admin_address' => env('MAIL_ADMIN_ADDRESS', 'info@mindbloombg.com'),
 
+    // Who gets the "new comment waiting for approval" email. Comma-separated in .env.
+    'comment_moderators' => array_filter(array_map('trim', explode(',', env(
+        'MAIL_COMMENT_MODERATORS',
+        'jenelli83@abv.bg,info@grozdevdigital.com'
+    )))),
+
 ];

@@ -36,6 +36,8 @@ class BlogController extends Controller
             'post' => $post,
             'showFullContent' => ! $isLocked || $this->hasValidUnlock($post, $request->query('unlock')),
             'relatedPosts' => $this->relatedPosts($post),
+            'comments' => $post->comments()->approved()->orderBy('approved_at')->get(),
+            'commentChallenge' => $post->commentChallenge(),
         ]);
     }
 

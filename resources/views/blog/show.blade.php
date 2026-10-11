@@ -85,6 +85,8 @@
             <div class="mad-text-medium">
               {!! $post->body !!}
             </div>
+
+            @include('blog.partials.comments')
           @else
             <div class="content-element-3" style="display:flex; align-items:center; gap:1.5rem; background:var(--color-primary-10); color:var(--color-primary-darker); border-radius:var(--br-main); padding:1.5rem;">
               <i class="fas fa-lock" style="font-size:6.75rem; line-height:1; opacity:.35; flex-shrink:0;"></i>

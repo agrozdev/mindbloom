@@ -7,6 +7,7 @@ use App\Http\Controllers\EventRegistrationController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PostCommentController;
 use App\Http\Controllers\PostQuestionController;
 use App\Http\Controllers\PostUnlockController;
 use App\Http\Controllers\ServiceController;
@@ -32,6 +33,7 @@ Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{category}', [BlogController::class, 'category'])->name('blog.category');
 Route::get('/blog/{category}/{post}', [BlogController::class, 'show'])->name('blog.show')->scopeBindings();
 Route::post('/blog/{category}/{post}/question', [PostQuestionController::class, 'store'])->name('blog.question')->scopeBindings()->middleware('throttle:5,1');
+Route::post('/blog/{category}/{post}/comments', [PostCommentController::class, 'store'])->name('blog.comment')->scopeBindings()->middleware('throttle:5,1');
 Route::get('/blog/{category}/{post}/unlock', [PostUnlockController::class, 'checkout'])->name('blog.unlock')->scopeBindings();
 Route::post('/blog/{category}/{post}/unlock', [PostUnlockController::class, 'store'])->name('blog.unlock.store')->scopeBindings()->middleware('throttle:10,1');
 
