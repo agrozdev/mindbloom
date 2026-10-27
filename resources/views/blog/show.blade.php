@@ -14,7 +14,7 @@
     $postUrl = route('blog.show', [$post->category, $post]);
     // Built here, not in the {!! !!} echo: a bare "@context" key there is
     // compiled as Blade's @context directive and corrupts the JSON.
-    $postSchemaJson = json_encode([
+    $postSchema = [
         '@context' => 'https://schema.org',
         '@type' => 'BlogPosting',
         'headline' => $post->title,
@@ -28,7 +28,26 @@
         'articleSection' => optional($post->category)->name,
         'author' => ['@id' => route('home') . '#business'],
         'publisher' => ['@id' => route('home') . '#business'],
-    ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    ];
+    // Registration wall: the full text is in the HTML, only .story-locked is gated.
+    if ($gate) {
+        $postSchema['isAccessibleForFree'] = false;
+        $postSchema['hasPart'] = [
+            '@type' => 'WebPageElement',
+            'isAccessibleForFree' => false,
+            'cssSelector' => '.story-locked',
+        ];
+    }
+    if ($reviews->isNotEmpty()) {
+        $postSchema['aggregateRating'] = [
+            '@type' => 'AggregateRating',
+            'ratingValue' => round($reviews->avg('rating'), 1),
+            'reviewCount' => $reviews->count(),
+            'bestRating' => 5,
+            'worstRating' => 1,
+        ];
+    }
+    $postSchemaJson = json_encode($postSchema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
   @endphp
   <script type="application/ld+json">{!! $postSchemaJson !!}</script>
   @include('partials.schema-breadcrumb', ['items' => array_filter([
@@ -37,6 +56,14 @@
       $post->category ? ['name' => $post->category->name, 'url' => route('blog.category', $post->category)] : null,
       ['name' => $post->title],
   ])])
+@endpush
+
+@push('styles')
+  <link rel="stylesheet" href="{{ asset('css/readers.css') }}?v={{ filemtime(public_path('css/readers.css')) }}" />
+@endpush
+
+@push('scripts')
+  <script src="{{ asset('js/story-gate.js') }}?v={{ filemtime(public_path('js/story-gate.js')) }}" defer></script>
 @endpush
 
 @section('content')
@@ -82,9 +109,22 @@
           @endif
 
           @if ($showFullContent)
-            <div class="mad-text-medium">
-              {!! $post->body !!}
+            <div class="mad-text-medium story-content @if ($gate && ! $readerIdentified) is-gated @endif" data-story-id="{{ $post->id }}" @if ($readerIdentified) data-track-url="{{ route('readers.track') }}" data-csrf="{{ csrf_token() }}" @endif>
+              @if ($gate)
+                {!! $gate['visible'] !!}
+                <div class="story-locked" @unless ($readerIdentified) inert @endunless>
+                  {!! $gate['locked'] !!}
+                </div>
+              @else
+                {!! $post->body !!}
+              @endif
             </div>
+
+            @if ($gate && ! $readerIdentified)
+              @include('blog.partials.story-gate')
+            @endif
+
+            @include('blog.partials.reviews')
 
             @include('blog.partials.comments')
           @else

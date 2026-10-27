@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\Post;
 use App\Models\PostCategory;
+use App\Models\Setting;
+use App\Services\Readers\ReaderIdentity;
+use App\Services\Readers\ReadingTracker;
+use App\Services\Readers\StoryGate;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -31,14 +35,32 @@ class BlogController extends Controller
     public function show(PostCategory $category, Post $post, Request $request)
     {
         $isLocked = $post->price !== null;
+        $showFullContent = ! $isLocked || $this->hasValidUnlock($post, $request->query('unlock'));
+        $reader = ReaderIdentity::current($request);
 
-        return view('blog.show', [
+        if ($reader && $showFullContent) {
+            ReadingTracker::recordVisit($reader, $post);
+        }
+
+        // The whole story is always in the HTML (for search engines); the gate
+        // only hides the locked part with CSS until the reader signs up.
+        $gate = $showFullContent && $post->isGated()
+            ? StoryGate::split($post->body, (int) Setting::get('gate_visible_percent'))
+            : null;
+
+        $response = response()->view('blog.show', [
             'post' => $post,
-            'showFullContent' => ! $isLocked || $this->hasValidUnlock($post, $request->query('unlock')),
+            'showFullContent' => $showFullContent,
+            'gate' => $gate,
+            'readerIdentified' => $reader !== null,
+            'reviews' => $post->reviews()->published()->with('reader')->latest()->get(),
             'relatedPosts' => $this->relatedPosts($post),
             'comments' => $post->comments()->approved()->orderBy('approved_at')->get(),
             'commentChallenge' => $post->commentChallenge(),
         ]);
+
+        // The page differs per reader (gate or no gate), so keep shared caches out.
+        return $reader ? $response->header('Cache-Control', 'private, no-store') : $response;
     }
 
     /**

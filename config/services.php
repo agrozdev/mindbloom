@@ -54,4 +54,9 @@ return [
         'public_key_path' => env('MYPOS_PUBLIC_KEY_PATH', storage_path('app/mypos/mypos_public_key.pem')),
     ],
 
+    'turnstile' => [
+        'site_key' => env('TURNSTILE_SITE_KEY'),
+        'secret_key' => env('TURNSTILE_SECRET_KEY'),
+    ],
+
 ];

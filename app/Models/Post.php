@@ -32,7 +32,14 @@ class Post extends Model
 
     protected static function booted(): void
     {
-        static::deleting(fn (Post $post) => $post->comments()->delete());
+        static::deleting(function (Post $post) {
+            $post->comments()->delete();
+            // No FK to posts (MyISAM on some installs), so clean up reader data here.
+            $post->storyReads()->delete();
+            $post->reviews()->delete();
+            EmailLog::query()->where('post_id', $post->id)->update(['post_id' => null]);
+            Reader::query()->where('signup_story_id', $post->id)->update(['signup_story_id' => null]);
+        });
     }
 
     public function getRouteKeyName(): string
@@ -48,6 +55,24 @@ class Post extends Model
     public function comments(): HasMany
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function storyReads(): HasMany
+    {
+        return $this->hasMany(StoryRead::class);
+    }
+
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    /**
+     * Free stories get the sign-up gate; paid ones keep the myPOS paywall.
+     */
+    public function isGated(): bool
+    {
+        return $this->price === null;
     }
 
     /**

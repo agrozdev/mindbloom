@@ -4,14 +4,18 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\EventRegistrationController;
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PostCommentController;
 use App\Http\Controllers\PostQuestionController;
 use App\Http\Controllers\PostUnlockController;
+use App\Http\Controllers\ReaderSignupController;
+use App\Http\Controllers\ReadingTrackController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SitemapController;
+use App\Http\Controllers\UnsubscribeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'home'])->name('home');
@@ -36,6 +40,13 @@ Route::post('/blog/{category}/{post}/question', [PostQuestionController::class, 
 Route::post('/blog/{category}/{post}/comments', [PostCommentController::class, 'store'])->name('blog.comment')->scopeBindings()->middleware('throttle:5,1');
 Route::get('/blog/{category}/{post}/unlock', [PostUnlockController::class, 'checkout'])->name('blog.unlock')->scopeBindings();
 Route::post('/blog/{category}/{post}/unlock', [PostUnlockController::class, 'store'])->name('blog.unlock.store')->scopeBindings()->middleware('throttle:10,1');
+
+Route::post('/chitateli/registraciya', [ReaderSignupController::class, 'store'])->name('readers.signup')->middleware('throttle:5,60');
+Route::post('/chitateli/chetene', [ReadingTrackController::class, 'store'])->name('readers.track')->middleware('throttle:120,1');
+Route::get('/otziv/{token}', [FeedbackController::class, 'show'])->name('feedback.show');
+Route::post('/otziv/{token}', [FeedbackController::class, 'store'])->name('feedback.store')->middleware('throttle:10,1');
+Route::get('/otpisvane/{token}', [UnsubscribeController::class, 'show'])->name('unsubscribe.show');
+Route::post('/otpisvane/{token}', [UnsubscribeController::class, 'store'])->name('unsubscribe.store')->middleware('throttle:10,1');
 
 Route::get('/contact', [ContactController::class, 'create'])->name('contact');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store')->middleware('throttle:5,1');

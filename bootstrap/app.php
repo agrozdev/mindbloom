@@ -15,6 +15,12 @@ return Application::configure(basePath: dirname(__DIR__))
             'payments/mypos/notify',
             'payments/*/thank-you',
             'payments/*/cancelled',
+            // One-click unsubscribe from Gmail/Outlook (List-Unsubscribe-Post) can't send a CSRF token.
+            'otpisvane/*',
+        ]);
+
+        $middleware->web(append: [
+            \App\Http\Middleware\CaptureReaderToken::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
