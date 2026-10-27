@@ -9,6 +9,7 @@ use App\Models\Post;
 use App\Models\Reader;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\URL;
 use RuntimeException;
 use Throwable;
 
@@ -31,27 +32,33 @@ class ReaderMailer
     /**
      * Fills the placeholders and tags the site's links with the reader token.
      *
+     * Without a feedback token (preview and test emails) the feedback links
+     * open a demo form that saves nothing, and links are not tagged, so
+     * clicking a test email never signs the admin in as the reader.
+     *
      * @return array{subject: string, body: string}
      */
-    public function render(Reader $reader, ?Post $post, string $subject, string $body, string $feedbackToken): array
+    public function render(Reader $reader, ?Post $post, string $subject, string $body, ?string $feedbackToken): array
     {
         $values = [
             '{име}' => $reader->firstName(),
             '{приказка}' => $post?->title ?? '',
             '{линк_приказка}' => $post ? route('blog.show', [$post->category, $post]) : route('blog.index'),
-            '{линк_отзив}' => route('feedback.show', $feedbackToken),
+            '{линк_отзив}' => $this->feedbackUrl($post, $feedbackToken),
             '{отписване}' => route('unsubscribe.show', $reader->token),
         ];
 
         $htmlValues = array_map(fn (string $value) => e($value), $values);
-        $htmlValues['{звезди}'] = $this->stars($feedbackToken);
+        $htmlValues['{звезди}'] = $this->stars($post, $feedbackToken);
 
         // The editor may store "{" as an entity or wrap URLs placed in href; normalise first.
         $body = str_replace(['%7B', '%7D'], ['{', '}'], $body);
 
         return [
             'subject' => strtr($subject, $values + ['{звезди}' => '']),
-            'body' => $this->buttonize($this->tagLinks(strtr($body, $htmlValues), $reader)),
+            'body' => $this->buttonize($feedbackToken !== null
+                ? $this->tagLinks(strtr($body, $htmlValues), $reader)
+                : strtr($body, $htmlValues)),
         ];
     }
 
@@ -73,15 +80,14 @@ class ReaderMailer
      */
     public function preview(Reader $reader, ?Post $post, string $subject, string $body): string
     {
-        $rendered = $this->render($reader, $post, $subject, $body, self::newFeedbackToken());
+        $rendered = $this->render($reader, $post, $subject, $body, null);
 
         return $this->mailable($reader, $post, $rendered['subject'], $rendered['body'])->render();
     }
 
     public function sendTest(Reader $reader, ?Post $post, string $subject, string $body, string $to): void
     {
-        // A throwaway feedback token: it isn't stored, so the test links lead nowhere.
-        $rendered = $this->render($reader, $post, $subject, $body, self::newFeedbackToken());
+        $rendered = $this->render($reader, $post, $subject, $body, null);
 
         $mailable = $this->mailable($reader, $post, $rendered['subject'], $rendered['body']);
         $mailable->emailSubject = '[ТЕСТ] '.$rendered['subject'];
@@ -136,12 +142,28 @@ class ReaderMailer
         );
     }
 
-    private function stars(string $feedbackToken): string
+    /**
+     * The reader's own review link, or a signed demo link for test emails.
+     */
+    private function feedbackUrl(?Post $post, ?string $feedbackToken, ?int $rating = null): string
+    {
+        $query = $rating ? ['rating' => $rating] : [];
+
+        if ($feedbackToken !== null) {
+            return route('feedback.show', ['token' => $feedbackToken] + $query);
+        }
+
+        return $post
+            ? URL::temporarySignedRoute('feedback.demo', now()->addDays(30), ['post' => $post] + $query)
+            : route('blog.index');
+    }
+
+    private function stars(?Post $post, ?string $feedbackToken): string
     {
         $stars = '';
 
         for ($rating = 1; $rating <= 5; $rating++) {
-            $url = e(route('feedback.show', ['token' => $feedbackToken, 'rating' => $rating]));
+            $url = e($this->feedbackUrl($post, $feedbackToken, $rating));
             $stars .= '<a href="'.$url.'" title="'.$rating.' от 5" style="color:#E8A317; font-size:30px; line-height:1; text-decoration:none; padding:0 2px;">&#9733;</a>';
         }
 

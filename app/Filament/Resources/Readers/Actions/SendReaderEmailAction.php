@@ -199,7 +199,7 @@ class SendReaderEmailAction
 
         $post = $get('post_id') ? Post::with('category')->find($get('post_id')) : null;
         $html = app(ReaderMailer::class)->preview($record, $post, (string) $get('subject'), $body);
-        $subject = app(ReaderMailer::class)->render($record, $post, (string) $get('subject'), '', 'preview')['subject'];
+        $subject = app(ReaderMailer::class)->render($record, $post, (string) $get('subject'), '', null)['subject'];
 
         return new HtmlString(view('filament.readers.email-preview', ['html' => $html, 'subject' => $subject, 'reader' => $record])->render());
     }

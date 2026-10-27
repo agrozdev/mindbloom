@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\EmailLog;
+use App\Models\Post;
 use App\Models\Review;
 use App\Services\Readers\ReaderIdentity;
 use Illuminate\Http\Request;
@@ -33,6 +34,24 @@ class FeedbackController extends Controller
                 'alreadySent' => $log->review()->exists(),
             ])
             ->withCookie(ReaderIdentity::cookieFor($log->reader, $request));
+    }
+
+    /**
+     * Where the feedback links in test emails lead: the real form, filled
+     * for the admin to look at, that saves nothing.
+     */
+    public function demo(Request $request, Post $post)
+    {
+        $rating = (int) $request->query('rating');
+
+        return response()->view('readers.feedback', [
+            'demo' => true,
+            'post' => $post->load('category'),
+            'reader' => null,
+            'token' => null,
+            'rating' => $rating >= 1 && $rating <= 5 ? $rating : null,
+            'alreadySent' => false,
+        ]);
     }
 
     public function store(Request $request, string $token)

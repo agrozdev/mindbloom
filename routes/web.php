@@ -43,6 +43,7 @@ Route::post('/blog/{category}/{post}/unlock', [PostUnlockController::class, 'sto
 
 Route::post('/chitateli/registraciya', [ReaderSignupController::class, 'store'])->name('readers.signup')->middleware('throttle:5,60');
 Route::post('/chitateli/chetene', [ReadingTrackController::class, 'store'])->name('readers.track')->middleware('throttle:120,1');
+Route::get('/otziv/test/{post}', [FeedbackController::class, 'demo'])->name('feedback.demo')->middleware('signed');
 Route::get('/otziv/{token}', [FeedbackController::class, 'show'])->name('feedback.show');
 Route::post('/otziv/{token}', [FeedbackController::class, 'store'])->name('feedback.store')->middleware('throttle:10,1');
 Route::get('/otpisvane/{token}', [UnsubscribeController::class, 'show'])->name('unsubscribe.show');

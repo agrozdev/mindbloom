@@ -10,12 +10,17 @@
     </div>
     <p><a href="{{ route('blog.show', [$post->category, $post]) }}" class="btn">Обратно към приказката</a></p>
   @else
+    @if ($demo ?? false)
+      <div class="mad-alert-box mad-alert-box--info content-element-3" role="status">
+        <div class="mad-alert-box-inner">Това е пробен преглед от тестов имейл. Така ще изглежда формата за читателя, но нищо от нея няма да бъде записано.</div>
+      </div>
+    @endif
     <p class="content-element-3">
-      Здравейте, {{ $reader->firstName() }}! Как ви се стори приказката
+      Здравейте{{ $reader ? ', '.$reader->firstName() : '' }}! Как ви се стори приказката
       <a href="{{ route('blog.show', [$post->category, $post]) }}">„{{ $post->title }}“</a>?
     </p>
 
-    <form method="POST" action="{{ route('feedback.store', $token) }}" class="mad-form" novalidate>
+    <form method="POST" action="{{ $token ? route('feedback.store', $token) : '#' }}" class="mad-form" novalidate @if ($demo ?? false) onsubmit="return false;" @endif>
       @csrf
       <div class="mad-form-honeypot" aria-hidden="true">
         <label for="feedback_website">Website</label>
@@ -52,7 +57,7 @@
         </label>
       </div>
 
-      <button type="submit" class="btn btn-big">Изпрати мнението си</button>
+      <button type="submit" class="btn btn-big" @disabled($demo ?? false)>Изпрати мнението си</button>
     </form>
   @endif
 @endsection

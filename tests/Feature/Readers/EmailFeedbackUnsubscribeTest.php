@@ -9,6 +9,7 @@ use App\Models\Reader;
 use App\Models\Review;
 use App\Models\StoryRead;
 use App\Models\User;
+use App\Services\Readers\ReaderIdentity;
 use App\Services\Readers\ReaderMailer;
 use Illuminate\Support\Facades\Mail;
 use RuntimeException;
@@ -98,6 +99,36 @@ class EmailFeedbackUnsubscribeTest extends ReaderTestCase
 
         Mail::assertSent(ReaderMessage::class, fn (ReaderMessage $mail) => $mail->hasTo('admin@example.com') && $mail->emailSubject === '[ТЕСТ] Тема');
         $this->assertSame(0, EmailLog::query()->count());
+    }
+
+    public function test_test_email_links_open_a_demo_form_and_carry_no_reader_token(): void
+    {
+        Mail::fake();
+        $post = $this->makeStory();
+        $reader = $this->makeReader();
+
+        app(ReaderMailer::class)->sendTest($reader, $post, 'Тема', '<p>{звезди}</p><p><a href="{линк_отзив}">Отзив</a> <a href="{линк_приказка}">Приказка</a></p>', 'admin@example.com');
+
+        $html = '';
+        Mail::assertSent(ReaderMessage::class, function (ReaderMessage $mail) use (&$html) {
+            $html = $mail->htmlBody;
+
+            return true;
+        });
+
+        $this->assertStringNotContainsString($reader->token, $html);
+        preg_match('/href="([^"]*rating=4[^"]*)"/', $html, $star);
+        $url = html_entity_decode($star[1]);
+        $this->assertStringContainsString('/otziv/test/', $url);
+
+        $this->get($url)
+            ->assertOk()
+            ->assertSee('Това е пробен преглед от тестов имейл')
+            ->assertSee('id="rating_4" name="rating" value="4" checked', false)
+            ->assertCookieMissing(ReaderIdentity::COOKIE);
+
+        $this->get(str_replace('rating=4', 'rating=5', $url))->assertForbidden();
+        $this->assertSame(0, Review::query()->count());
     }
 
     private function sentLog(): EmailLog

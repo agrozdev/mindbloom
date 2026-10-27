@@ -110,7 +110,7 @@ return new class extends Migration
     private function seedTemplates(): void
     {
         $button = fn (string $label, string $href) => '<p><a href="'.$href.'"><strong>'.$label.'</strong></a></p>';
-        $signature = '<p>С топлина,<br>Нели Гочева, MindBloom</p>';
+        $signature = '<p>С топлина,<br>MindBloom</p>';
         $now = now();
 
         DB::table('email_templates')->insert([
