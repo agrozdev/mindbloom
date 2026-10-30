@@ -187,6 +187,9 @@
       })
       .then(function (result) {
         if (result.status >= 200 && result.status < 300) {
+          if (typeof fbq === 'function') {
+            fbq('track', 'Lead');
+          }
           reveal();
           startTracking(
             content.getAttribute('data-track-url') || form.getAttribute('data-track-url'),

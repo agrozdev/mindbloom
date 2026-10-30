@@ -44,6 +44,8 @@ class ContactController extends Controller
 
         Mail::to(config('mail.admin_address'))->send(new ContactFormSubmitted($data));
 
-        return back()->with('status', 'Благодарим ви! Ще се свържем с вас скоро.');
+        return back()
+            ->with('status', 'Благодарим ви! Ще се свържем с вас скоро.')
+            ->with('track_lead', true);
     }
 }

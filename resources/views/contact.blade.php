@@ -61,6 +61,17 @@
               </div>
             @endif
 
+            {{-- Only set on a real submission, not on the silent bot response. --}}
+            @if (session('track_lead'))
+              @push('scripts')
+                <script>
+                  if (typeof fbq === 'function') {
+                    fbq('track', 'Lead');
+                  }
+                </script>
+              @endpush
+            @endif
+
             <form id="mad-contact-form" class="mad-contact-form mad-form type-2 item-col-2" method="POST" action="{{ route('contact.store') }}" novalidate data-validate>
               @csrf
               <div class="mad-form-honeypot" aria-hidden="true">
