@@ -1,3 +1,6 @@
+# PHP 8.4 handler (SuperHosting/cPanel). Without it every PHP request returns 500
+# (outage 2026-11-04). Must stay in sync with the server copy.
+AddHandler application/x-httpd-ea-php84___lsphp .php .php8 .phtml
 <IfModule mod_rewrite.c>
     RewriteEngine On
 

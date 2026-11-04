@@ -16,14 +16,17 @@
     RewriteRule ^ /%1 [R=301,L,NE]
 
     # Canonical host + scheme: force https:// and drop www in a single 301 hop.
+    # Build targets from $1 (the path relative to public/), not %{REQUEST_URI}:
+    # since the host's PHP-handler change (Nov 2026) REQUEST_URI here carries
+    # the internal /public/ prefix, which turned every redirect into 2 hops.
     # Scoped to the production domain so local dev (http://mindbloombg.loc) is untouched.
     RewriteCond %{HTTP_HOST} ^(www\.)?mindbloombg\.com$ [NC]
     RewriteCond %{HTTPS} !=on
     RewriteCond %{HTTP:X-Forwarded-Proto} !=https
-    RewriteRule ^ https://mindbloombg.com%{REQUEST_URI} [L,R=301]
+    RewriteRule ^(.*)$ https://mindbloombg.com/$1 [L,R=301]
 
     RewriteCond %{HTTP_HOST} ^www\.mindbloombg\.com$ [NC]
-    RewriteRule ^ https://mindbloombg.com%{REQUEST_URI} [L,R=301]
+    RewriteRule ^(.*)$ https://mindbloombg.com/$1 [L,R=301]
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
@@ -35,8 +38,7 @@
 
     # Redirect Trailing Slashes If Not A Folder...
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_URI} (.+)/$
-    RewriteRule ^ %1 [L,R=301]
+    RewriteRule ^(.+)/$ /$1 [L,R=301]
 
     # Send Requests To Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d
