@@ -65,7 +65,10 @@ trait HasMetaDescription
 
         $truncated = mb_substr($value, 0, $limit);
 
-        if (preg_match('/^(.*[.!?])\s/us', $truncated . ' ', $matches)) {
+        // Sentence ends include the single-character ellipsis "…" the stories use a lot.
+        // Only cut there if it keeps a useful snippet; otherwise one opening question
+        // ("А ти можеш ли да бързаш…?") would be all that's left.
+        if (preg_match('/^(.*[.!?…])\s/us', $truncated . ' ', $matches) && mb_strlen(trim($matches[1])) >= 90) {
             return trim($matches[1]);
         }
 
