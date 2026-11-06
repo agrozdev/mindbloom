@@ -21,17 +21,34 @@ trait HasMetaDescription
         $title = trim((string) ($this->title ?? ''));
         $excerpt = $this->collapseWhitespace((string) ($this->excerpt ?? ''));
 
+        // Compare letters/digits only: "Георги……..име" must count as a copy of
+        // the title "Георги ……име 😉" even though dots, spaces and emoji differ.
         $excerptIsUsable = $excerpt !== ''
             && mb_strlen($excerpt) >= 40
-            && Str::lower($excerpt) !== Str::lower($title);
+            && $this->lettersOnly($excerpt) !== $this->lettersOnly($title);
 
         $bodyField = property_exists($this, 'metaBodyField') ? $this->metaBodyField : 'body';
+        $body = $this->collapseWhitespace((string) ($this->{$bodyField} ?? ''));
 
-        $source = $excerptIsUsable
-            ? $excerpt
-            : $this->collapseWhitespace((string) ($this->{$bodyField} ?? ''));
+        if (! $excerptIsUsable) {
+            return $this->limitAtSentenceOrWord($body, $length);
+        }
 
-        return $this->limitAtSentenceOrWord($source, $length);
+        // A one-line teaser ("А ти можеш ли да бързаш, без да се побъркваш?")
+        // makes a thin snippet - continue it with the opening of the story.
+        // (If the story itself opens with the teaser, the body alone already does that.)
+        if (mb_strlen($excerpt) < 100 && $body !== '') {
+            $excerpt = Str::startsWith($this->lettersOnly($body), $this->lettersOnly($excerpt))
+                ? $body
+                : $excerpt . ' ' . $body;
+        }
+
+        return $this->limitAtSentenceOrWord($excerpt, $length);
+    }
+
+    protected function lettersOnly(string $value): string
+    {
+        return mb_strtolower(preg_replace('/[^\p{L}\p{N}]+/u', '', $value));
     }
 
     /**
