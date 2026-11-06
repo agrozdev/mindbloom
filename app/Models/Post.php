@@ -32,6 +32,23 @@ class Post extends Model
 
     protected static function booted(): void
     {
+        // Changing a post's slug or category in the admin used to leave the old URL as a 404.
+        static::updated(function (Post $post) {
+            if (! $post->wasChanged(['slug', 'category_id'])) {
+                return;
+            }
+
+            $oldCategory = PostCategory::find($post->getOriginal('category_id'));
+            $newCategory = $post->category()->first();
+
+            if ($oldCategory && $newCategory && $post->getOriginal('slug')) {
+                Redirect::record(
+                    '/blog/' . $oldCategory->slug . '/' . $post->getOriginal('slug'),
+                    '/blog/' . $newCategory->slug . '/' . $post->slug,
+                );
+            }
+        });
+
         static::deleting(function (Post $post) {
             $post->comments()->delete();
             // No FK to posts (MyISAM on some installs), so clean up reader data here.
